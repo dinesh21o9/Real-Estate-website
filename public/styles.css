@@ -388,9 +388,10 @@ body {
 }
 
 .tab-btn.active {
-  color: black;
+  color: white;
   font-weight: 600;
   outline: 0 ;
+  background-color: var(--green-pigment);
 }
 
 .tab-btn:focus{
