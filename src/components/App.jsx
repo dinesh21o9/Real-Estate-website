@@ -127,7 +127,7 @@ function App() {
           <section class="section about" aria-label="about">
             <div class="container">
 
-              <div class="about-banner img-holder" style={{width: 600, height: 700}}>
+              <div class="about-banner img-holder" style={{width: 400, height: 500}}>
                 <img src="./assets/images/about-banner.jpg" width="600" height="700" loading="lazy" alt="about banner"
                   class="img-cover"/>
 

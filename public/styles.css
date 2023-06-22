@@ -1,16 +1,5 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
 
 :root {
-
-  /**
-   * colors
-   */
 
   --oxford-blue_60: hsla(224, 34%, 13%, 0.6);
   --green-pigment: hsl(142, 76%, 36%);
@@ -31,13 +20,7 @@
   --mango: hsl(43, 96%, 56%);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
-
-  /**
-   * typography
-   */
-
   --ff-spartan: 'League Spartan', sans-serif;
-
   --fs-1: 3.6rem;
   --fs-2: 2.4rem;
   --fs-3: 2rem;
@@ -83,13 +66,7 @@
 }
 
 
-
-
-
-/*-----------------------------------*\
-  #RESET
-\*-----------------------------------*/
-
+/* Reset  */
 *,
 *::before,
 *::after {
@@ -146,12 +123,7 @@ body {
 }
 
 
-
-
-
-/*-----------------------------------*\
-  #REUSED STYLE
-\*-----------------------------------*/
+/* Reused style  */
 
 .container { padding-inline: 15px; }
 
@@ -209,12 +181,7 @@ body {
 .section-text { line-height: 1.6; }
 
 
-
-
-
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
+/* Header   */
 
 .header {
   background-color: var(--white);
@@ -303,13 +270,7 @@ body {
   color: var(--green-pigment); 
 }
 
-
-
-
-
-/*-----------------------------------*\
-  #HERO
-\*-----------------------------------*/
+/* Hero   */
 
 .article { position: relative; }
 
@@ -640,14 +601,9 @@ body {
 .contact .btn ion-icon { --ionicon-stroke-width: 50px; }
 
 
-
-
-
-/*-----------------------------------*\
-  #NEWSLETTER
-\*-----------------------------------*/
-
+/* NewsLetter  */
 .newsletter {
+
   position: absolute;
   top: 100%;
   left: 50%;
@@ -687,13 +643,7 @@ body {
   bottom: 3px;
 }
 
-
-
-
-
-/*-----------------------------------*\
-  #FOOTER
-\*-----------------------------------*/
+/* Footer   */
 
 .footer {
   background-color: var(--eerie-black);
@@ -796,13 +746,7 @@ body {
   color: var(--white);
 }
 
-
-
-
-
-/*-----------------------------------*\
-  #BACK TO TOP
-\*-----------------------------------*/
+/* Back to top  */
 
 .back-top-btn {
   position: fixed;
@@ -826,34 +770,17 @@ body {
 }
 
 
+/* Media query */
 
-
-
-/*-----------------------------------*\
-  #MEDIA QUERIES
-\*-----------------------------------*/
-
-/**
- * responsive for larger than 640px screen
- */
+/* responsive for larger than 640px screen */
 
 @media (min-width: 640px) {
-
-  /**
-   * REUSED STYLE
-   */
 
   .container {
     max-width: 640px;
     width: 100%;
     margin-inline: auto;
   }
-
-  
-
-  /**
-   * HERO
-   */
 
   .hero .container { max-width: unset; }
 
@@ -879,17 +806,7 @@ body {
     border: none;
   }
 
-  /** 
-   * NEWSLETTER
-   */
-
   .newsletter { width: calc(100% - 130px); }
-
-
-
-  /**
-   * FOOTER
-   */
 
   .footer { padding-block-start: 130px; }
 
@@ -898,32 +815,15 @@ body {
 
 
 
-
-/**
- * responsive for larger than 768px screen
- */
+/* 768px screen responsiveness */
 
 @media (min-width: 768px) {
 
-  /**
-   * CUSTOM PROPERTY
-   */
 
   :root {
-
-    /**
-     * typography
-     */
-
     --fs-2: 3rem;
-
   }
 
-
-
-  /**
-   * REUSED STYLE
-   */
 
   .container,
   .hero-form-wrapper { max-width: 700px; }
@@ -934,10 +834,7 @@ body {
   }
 
 
-
-  /**
-   * HERO
-   */
+/* Hero */
 
   .hero-content {
     text-align: left;
@@ -950,11 +847,7 @@ body {
 
   .hero-form { grid-template-columns: 1fr 1fr; }
 
-
-
-  /**
-   * ABOUT
-   */
+/* About */
 
   .about .container {
     display: grid;
@@ -966,19 +859,13 @@ body {
   .about-banner { margin-block-end: 10; }
 
 
-
-  /**
-   * SERVICE, PROPERTY
-   */
+/* Servie and property */
 
   .service-list,
   .property-list { grid-template-columns: 1fr 1fr; }
 
 
-
-  /**
-   * NEWSLETTER
-   */
+/* Newsletter */
 
   .newsletter { text-align: left; }
 
@@ -988,10 +875,7 @@ body {
   }
 
 
-
-  /**
-   * FOOTER
-   */
+/* Footer  */
 
   .footer { padding-block-start: 80px; }
 
@@ -1014,48 +898,19 @@ body {
 
 
 
-
-
-/**
- * responsive for larger than 992px screen
- */
+/* 992px screen responsiveness */
 
 @media (min-width: 992px) {
 
-  /**
-   * CUSTOM PROPERTY
-   */
 
   :root {
-
-    /**
-     * typography
-     */
-
     --fs-1: 4.8rem;
-
-    /**
-     * spacing
-     */
-
     --section-padding: 40px;
-
   }
-
-
-
-  /**
-   * REUSED STYLE
-   */
 
   .container,
   .hero-form-wrapper { max-width: 900px; }
 
-
-
-  /**
-   * HEADER
-   */
 
   .header > .container { gap: 30px; }
 
@@ -1077,46 +932,16 @@ body {
 
   .header .btn { margin-inline-start: 0; }
 
-
-
-  /**
-   * HERO
-   */
-
   .hero-content { padding-inline: calc(50% - 450px); }
 
   .hero-form { grid-template-columns: repeat(4, 1fr); }
 
-
-
-  /**
-   * ABOUT
-   */
-
   .about .container { gap: 50px; }
-
-
-
-  /**
-   * SERVICE, PROPERTY
-   */
 
   .service-list,
   .property-list { grid-template-columns: repeat(3, 1fr); }
 
-
-
-  /**
-   * NEWSLETTER
-   */
-
   .newsletter { width: calc(100% - 220px); }
-
-
-
-  /**
-   * FOOTER
-   */
 
   .footer-brand { grid-column: auto; }
 
@@ -1126,36 +951,14 @@ body {
 
 }
 
-
-
-
-
-/**
- * responsive for larger than 1200px screen
- */
+/* 1200px screen responsiveness */
 
 @media (min-width: 1200px) {
-
-  /**
-   * REUSED STYLE
-   */
 
   .container,
   .hero-form-wrapper { max-width: 1120px; }
 
-
-
-  /**
-   * HERO
-   */
-
   .hero-content { padding-inline: calc(50% - 560px); }
-
-
-
-  /**
-   * ABOUT
-   */
 
   .about .section-text { max-width: unset; }
 
