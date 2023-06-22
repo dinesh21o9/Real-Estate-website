@@ -114,7 +114,7 @@ function App() {
                     </select>
                   </div>
 
-                  <button type="submit" class="btn btn-primary">Search now</button>
+                  <button type="submit" class="btn btn-outline-success">Search now</button>
 
                 </form>
               </div>
