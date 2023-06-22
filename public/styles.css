@@ -167,9 +167,7 @@ body {
 
 .btn-secondary { border-radius: 50px; }
 
-.btn-primary { 
-  border-radius: var(--radius-6);
-  padding: 0; }
+.btn-primary { border-radius: var(--radius-6);}
 
 .h1 { 
   font-size: var(--fs-1); 
