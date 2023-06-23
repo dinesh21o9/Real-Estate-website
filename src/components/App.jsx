@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "./card";
 import property from "../property"
+import FeaturedCard from "./featuredCard";
+import Featuredprops from "../Featuredprops";
 
 function App() {
   return (
@@ -10,7 +12,7 @@ function App() {
       <div class="container">
 
           <a href="#" class="logo">
-            <ion-icon name="business-outline"></ion-icon> HavenBliss
+            <ion-icon name="Home"></ion-icon> HomeSeekr
           </a>
 
           <nav class="navbar container" data-navbar>
@@ -63,7 +65,8 @@ function App() {
                   </h1>
 
                   <p class="hero-text">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+                    Where Dreams Find Their Address, and Houses Become Homes.
+                    <br />Lorem velit esse cillum dolore eu fugiat nulla pariatur
                   </p>
 
                 </div>
@@ -114,7 +117,9 @@ function App() {
                     </select>
                   </div>
 
-                  <button type="submit" class="btn btn-outline-success">Search now</button>
+                  <button type="submit" class="search-btn btn btn-outline-success">
+                    Search
+                  </button>
 
                 </form>
               </div>
@@ -141,11 +146,11 @@ function App() {
                 <h2 class="h2 section-title">Efficiency. Transparency. Control.</h2>
 
                 <p class="section-text">
-                  Hously developed a platform for the Real Estate marketplace that allows buyers and sellers to easily
-                  execute a
-                  transaction on their own. The platform drives efficiency, cost transparency and control into the hands of
-                  the consumers.
-                  Hously is Real Estate Redefined.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Sed vehicula augue at purus feugiat consequat.
+                  Phasellus euismod nunc sed mauris maximus, vitae hendrerit risus luctus.
+                  Nulla facilisi. Cras at lorem eu nisi pharetra consequat.
+                  Fusce interdum sem in nisl congue, id commodo nulla pellentesque.
                 </p>
 
                 <a href="#" class="btn btn-primary">Learn More</a>
@@ -170,56 +175,55 @@ function App() {
 
                 <li>
                   <div class="service-card">
-
                     <div class="card-icon">
                       <ion-icon name="home-outline"></ion-icon>
                     </div>
-
                     <h3 class="h3 card-title">Evaluate Property</h3>
-
                     <p class="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm
                     </p>
-
                   </div>
                 </li>
 
                 <li>
                   <div class="service-card">
-
                     <div class="card-icon">
                       <ion-icon name="briefcase-outline"></ion-icon>
                     </div>
-
                     <h3 class="h3 card-title">Meeting with Agent</h3>
-
                     <p class="card-text">
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui official
                     </p>
-
                   </div>
                 </li>
 
                 <li>
                   <div class="service-card">
-
                     <div class="card-icon">
                       <ion-icon name="key"></ion-icon>
                     </div>
-
                     <h3 class="h3 card-title">Close the Deal</h3>
-
                     <p class="card-text">
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse hehe
                     </p>
-
                   </div>
                 </li>
-
               </ul>
-
             </div>
           </section>
+
+      {/* Features1 */}
+      <section className='featured background section service'>
+        <div className='container'>
+            <h2 class ="h2 section-title"> Property Types </h2>
+              <p class="section-text">
+                Search by type of property.
+              </p>
+            <ul class="service-list">
+              {Featuredprops.map((props) => <FeaturedCard cover = {props.cover} name = {props.name} total = {props.total} />)}
+            </ul>
+        </div>
+      </section>
 
       {/* property */}
           <section class="section property" aria-label="property">
@@ -228,7 +232,7 @@ function App() {
               <h2 class="h2 section-title">Featured Properties</h2>
 
               <p class="section-text">
-                A great plateform to buy, sell and rent your properties without any agent or commisions.
+                A great plateform to buy, sell and rent your properties without any agent or commision.
               </p>
 
               <ul class="property-list">
@@ -290,7 +294,7 @@ function App() {
             <div class="footer-brand">
 
               <a href="#" class="logo">
-                <ion-icon name="business-outline"></ion-icon> HeavenBliss
+                <ion-icon name="business-outline"></ion-icon> HomeSeekr
               </a>
 
               <p class="footer-text">
@@ -425,19 +429,19 @@ function App() {
           <div class="container">
 
             <p class="copyright">
-              &copy; 2022 HeavenBliss.
+              &copy; 2023 HomeSeekr Made by Dinesh Surya
             </p>
 
             <ul class="social-list">
 
               <li>
-                <a href="#" class="social-link">
+                <a href="https://www.facebook.com/profile.php?id=100006378244531" class="social-link">
                   <ion-icon name="logo-facebook"></ion-icon>
                 </a>
               </li>
 
               <li>
-                <a href="#" class="social-link">
+                <a href="https://www.instagram.com/roiyaru_ryuga/" class="social-link">
                   <ion-icon name="logo-instagram"></ion-icon>
                 </a>
               </li>
@@ -449,7 +453,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="social-link">
+                <a href="https://www.linkedin.com/in/gidijala-dinesh-surya-4844b3224/" class="social-link">
                   <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
               </li>

@@ -10,14 +10,9 @@
   --cadet-gray: hsl(215, 20%, 65%);
   --light-gray: hsl(216, 12%, 84%);
   --carcoal_20: hsla(214, 19%, 29%, 0.2);
-  --carcoal_15: hsla(214, 19%, 29%, 0.15);
+  --carcoal_15: hsla(214, 19%, 29%, 0.15);6
   --carcoal_10: hsla(214, 19%, 29%, 0.10);
   --sea-green: hsl(142, 72%, 29%);
-  --gainsboro: hsl(220, 13%, 91%);
-  --white_70: hsla(0, 0%, 100%, 0.7);
-  --gunmetal: hsl(215, 28%, 17%);
-  --manatee: hsl(218, 11%, 65%);
-  --mango: hsl(43, 96%, 56%);
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
   --ff-spartan: 'League Spartan', sans-serif;
@@ -56,9 +51,7 @@
   --radius-6: 6px;
   --radius-4: 4px;
 
-  /**
-   * transition
-   */
+  /* Transition */
 
   --transition: 0.25s ease;
   --cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
@@ -111,7 +104,7 @@ ion-icon { pointer-events: none; }
 address { font-style: normal; }
 
 html {
-  font-family: var(--ff-spartan);
+  font-family: 'League Spartan', sans-serif;
   font-size: 10px;
   scroll-behavior: smooth;
 }
@@ -119,13 +112,14 @@ html {
 body {
   background-color: var(--white);
   font-size: var(--fs-5);
+  font-family: 'League Spartan', sans-serif;
   color: var(--cadet-gray);
 }
 
 
 /* Reused style  */
 
-.container { padding-inline: 15px; }
+.container { padding-inline: 15px; justify-content: center; }
 
 .btn {
   background-color: var(--green-pigment);
@@ -328,7 +322,9 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-2);
 }
-
+.search-btn{
+  font-size: large;
+}
 .form-tab {
   padding: 10px;
   border-block-end: 1px solid var(--gainsboro);
@@ -403,9 +399,19 @@ body {
 
 .hero-form .btn { max-width: 100%; }
 
-
-
-
+.featured .box {
+  box-shadow: 0 0 20px 0 rgb(112 121 138 / 18%);
+  border-radius: 6px;
+  text-align: center;
+  padding: 30px;
+  cursor: pointer;
+}
+.featured img {
+  padding: 3%;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
 
   /* #ABOUT */
 
@@ -433,12 +439,8 @@ body {
 .about .section-text { margin-block: 20px 25px; }
 
 
+/* Service  */
 
-
-
-/*-----------------------------------*\
-  #SERVICE
-\*-----------------------------------*/
 
 .service :is(.section-title, .section-text) { text-align: center; }
 
@@ -471,13 +473,7 @@ body {
 
 .service-card .card-text { line-height: 1.6; }
 
-
-
-
-
-/*-----------------------------------*\
-  #PROPERTY
-\*-----------------------------------*/
+/* Property   */
 
 .property :is(.section-title, .section-text) { text-align: center; }
 
@@ -574,13 +570,7 @@ body {
   font-size: 16px;
 }
 
-
-
-
-
-/*-----------------------------------*\
-  #CONTACT
-\*-----------------------------------*/
+/* Contact  */
 
 .contact {
   padding-block-end: calc(var(--section-padding) * 2);
@@ -600,8 +590,8 @@ body {
 
 .contact .btn ion-icon { --ionicon-stroke-width: 50px; }
 
-
 /* NewsLetter  */
+
 .newsletter {
 
   position: absolute;
@@ -685,7 +675,10 @@ body {
 
 .footer-link ion-icon { font-size: 14px; }
 
-.footer-link:is(:hover, :focus) { opacity: 0.8; }
+.footer-link:is(:hover, :focus) { 
+  text-decoration: none;
+  opacity: 0.8; 
+}
 
 .footer-item {
   display: flex;
@@ -735,7 +728,7 @@ body {
 
 .social-link {
   color: var(--manatee);
-  border: 1px solid var(--gunmetal);
+  /* border: 1px solid var(--gunmetal); */
   padding: 4px;
   border-radius: var(--radius-6);
 }
@@ -811,9 +804,6 @@ body {
   .footer { padding-block-start: 130px; }
 
 }
-
-
-
 
 /* 768px screen responsiveness */
 
@@ -896,12 +886,9 @@ body {
 
 }
 
-
-
 /* 992px screen responsiveness */
 
 @media (min-width: 992px) {
-
 
   :root {
     --fs-1: 4.8rem;
