@@ -493,7 +493,7 @@ body {
   transition: var(--transition);
 }
 
-.property-card:is(:hover, :focus-within) { box-shadow: var(--shadow-5); }
+.property-card:is(:hover, :focus-within) { box-shadow: 0 20px 25px -5px hsla(214, 19%, 29%, 0.10); }
 
 .property-card .card-action-btn {
   position: absolute;
