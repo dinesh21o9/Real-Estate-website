@@ -411,6 +411,7 @@ body {
   height: 80px;
   margin: auto;
 }
+.featured-card:is(:hover, :focus-within) { box-shadow: 0 20px 25px -5px hsla(214, 19%, 29%, 0.10); }
 
   /* #ABOUT */
 

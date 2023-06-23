@@ -2,7 +2,7 @@ import React from "react"
 
 function featuredCard(props){
   return (
-      <div className='content grid5 mtop'>
+      <div className='content grid5 mtop featured-card'>
         
           <div className='box' >
             <img src={props.cover} alt={props.name} />
