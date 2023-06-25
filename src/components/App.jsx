@@ -294,7 +294,7 @@ function App() {
             <div class="footer-brand">
 
               <a href="/#" class="logo">
-                <ion-icon name="business-outline"></ion-icon> HomeSeekr
+                <ion-icon name="home"></ion-icon> HomeSeekr
               </a>
 
               <p class="footer-text">

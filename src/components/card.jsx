@@ -17,7 +17,7 @@ function Card(props) {
       <div class="card-content">
 
         <h3 class="h3">
-          <a href="#" class="card-title">{props.cardTitle}</a>
+          <a href="/#" class="card-title">{props.cardTitle}</a>
         </h3>
         
         <ul class="card-list">
