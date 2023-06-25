@@ -11,7 +11,7 @@ function App() {
     <header class="header" data-header>
       <div class="container">
 
-          <a href="#" class="logo">
+          <a href="/#" class="logo">
             <ion-icon name="Home"></ion-icon> HomeSeekr
           </a>
 
@@ -19,29 +19,29 @@ function App() {
             <ul class="navbar-list">
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Buy</a>
+                <a href="/#" class="navbar-link" data-nav-link>Buy</a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Rent</a>
+                <a href="/#" class="navbar-link" data-nav-link>Rent</a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Projects</a>
+                <a href="/#" class="navbar-link" data-nav-link>Projects</a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Agents</a>
+                <a href="/#" class="navbar-link" data-nav-link>Agents</a>
               </li>
 
               <li>
-                <a href="#" class="navbar-link" data-nav-link>Contact</a>
+                <a href="/#" class="navbar-link" data-nav-link>Contact</a>
               </li>
 
             </ul>
           </nav>
 
-          <a href="#" class="btn btn-secondary btn-lg">Signup</a>
+          <a href="/#" class="btn btn-secondary btn-lg">Signup</a>
 
           <button class="nav-toggle-btn" data-nav-toggler>
             <ion-icon name="menu-outline" class="menu-icon"></ion-icon>
@@ -153,7 +153,7 @@ function App() {
                   Fusce interdum sem in nisl congue, id commodo nulla pellentesque.
                 </p>
 
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="/#" class="btn btn-primary">Learn More</a>
 
               </div>
 
@@ -293,7 +293,7 @@ function App() {
 
             <div class="footer-brand">
 
-              <a href="#" class="logo">
+              <a href="/#" class="logo">
                 <ion-icon name="business-outline"></ion-icon> HomeSeekr
               </a>
 
@@ -310,7 +310,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">About us</span>
@@ -318,7 +318,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Services</span>
@@ -326,7 +326,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Pricing</span>
@@ -334,7 +334,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Blog</span>
@@ -342,7 +342,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Login</span>
@@ -358,7 +358,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Terms of Services</span>
@@ -366,7 +366,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Privacy Policy</span>
@@ -374,7 +374,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Listing</span>
@@ -382,7 +382,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="footer-link">
+                <a href="/#" class="footer-link">
                   <ion-icon name="chevron-forward"></ion-icon>
 
                   <span class="span">Contact</span>
@@ -404,7 +404,7 @@ function App() {
                   If you liked the website,<br/>
                   do let me know by<br/>
                   giving Intern 
-                  <a href="#" class="address-link">View on Google map</a>
+                  <a href="/#" class="address-link">View on Google map</a>
                 </address>
               </li>
 
@@ -447,7 +447,7 @@ function App() {
               </li>
 
               <li>
-                <a href="#" class="social-link">
+                <a href="/#" class="social-link">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </a>
               </li>
