@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-/**
- * add event on element
- */
-
 ReactDOM.render(<App />,document.getElementById('root'));
 
 const addEventOnElement = function (element, type, listener) {
@@ -22,10 +18,6 @@ const addEventOnElement = function (element, type, listener) {
  
 }
 
-
-/**
- * navbar toggle
- */
 
 const navbar = document.querySelector("[data-navbar]");
 const navLinks = document.querySelectorAll("[data-nav-link]");
@@ -45,10 +37,6 @@ const closeNav = function () {
 }
 addEventOnElement(navLinks, "click", closeNav);
 
-/**
- * add active class on header & back to top button
- */
-
 const header = document.querySelector("[data-header]");
 const backTopBtn = document.querySelector("[data-back-top-btn]");
 if(window){
@@ -63,9 +51,6 @@ if(window){
   });
 }
 
-/**
- * hero tab button
- */
 
 const tabBtns = document.querySelectorAll("[data-tab-btn]");
 

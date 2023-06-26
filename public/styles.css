@@ -124,8 +124,10 @@ body {
   background-color: var(--green-pigment);
   color: var(--white);
   font-weight: var(--fw-500);
+  font-size: medium;
   max-width: max-content;
   padding: var(--padding, 12px 28px);
+
 }
 
 .btn:is(:hover, :focus) { background-color: var(--sea-green); }
