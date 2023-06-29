@@ -411,13 +411,13 @@ function App() {
               <li class="footer-item">
                 <ion-icon name="mail-outline"></ion-icon>
 
-                <a href="mailto:contact@example.com" class="footer-link">dineshsurya.2002@gmail.com</a>
+                <a href="mailto:dineshsurya.2002@gmail.com" class="footer-link">dineshsurya.2002@gmail.com</a>
               </li>
 
               <li class="footer-item">
                 <ion-icon name="call-outline"></ion-icon>
 
-                <a href="tel:+152534468854" class="footer-link">+91 8121400482</a>
+                <a href="tel:8121400482" class="footer-link">+91 8121400482</a>
               </li>
 
             </ul>
