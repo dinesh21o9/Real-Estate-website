@@ -2,22 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(<App />,document.getElementById('root'));
-
-const addEventOnElement = function (element, type, listener) {
-  if(element){
-    var len = element ? element.length : 0;
-    if (len > 1) {
-      for (let i = 0; i < len; i++) {
-        element[i].addEventListener(type, listener);
-      }
-    } else {
+function addEventOnElement(element, type, listener) {
+  if (element) {
+    if (Array.isArray(element)) {
+      element.forEach((el) => {
+        if (el && typeof el.addEventListener === 'function') {
+          el.addEventListener(type, listener);
+        }
+      });
+    } else if (typeof element.addEventListener === 'function') {
       element.addEventListener(type, listener);
     }
   }
- 
 }
-
 
 const navbar = document.querySelector("[data-navbar]");
 const navLinks = document.querySelectorAll("[data-nav-link]");
@@ -26,31 +23,15 @@ const navToggler = document.querySelector("[data-nav-toggler]");
 const toggleNav = function () {
   navbar.classList.toggle("active");
   this.classList.toggle("active");
-}
+};
 
 addEventOnElement(navToggler, "click", toggleNav);
-
 
 const closeNav = function () {
   navbar.classList.remove("active");
   navToggler.classList.remove("active");
-}
+};
 addEventOnElement(navLinks, "click", closeNav);
-
-const header = document.querySelector("[data-header]");
-const backTopBtn = document.querySelector("[data-back-top-btn]");
-if(window){
-  window.addEventListener("scroll", function () {
-    if (window.scrollY >= 50) {
-      header.classList.add("active");
-      backTopBtn.classList.add("active");
-    } else {
-      header.classList.remove("active");
-      backTopBtn.classList.remove("active");
-    }
-  });
-}
-
 
 const tabBtns = document.querySelectorAll("[data-tab-btn]");
 
@@ -60,6 +41,8 @@ const changeTab = function () {
   lastClickedTabBtn.classList.remove("active");
   this.classList.add("active");
   lastClickedTabBtn = this;
-}
+};
 
 addEventOnElement(tabBtns, "click", changeTab);
+
+ReactDOM.render(<App />,document.getElementById('root'));
