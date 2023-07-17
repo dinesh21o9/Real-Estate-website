@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
+ReactDOM.render(<App />,document.getElementById('root'));
+
+
 function addEventOnElement(element, type, listener) {
   if (element) {
     if (Array.isArray(element)) {
@@ -44,5 +47,3 @@ const changeTab = function () {
 };
 
 addEventOnElement(tabBtns, "click", changeTab);
-
-ReactDOM.render(<App />,document.getElementById('root'));

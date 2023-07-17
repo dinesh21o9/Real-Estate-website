@@ -8,6 +8,7 @@ const Admin_Login = () => {
   const [data, setData] = useState({
     email: "",
     password: "",
+    page:"adminLogin",
   });
   const [error, setError] = useState("");
 
@@ -25,7 +26,7 @@ const Admin_Login = () => {
     }
     
     axios
-      .post("http://localhost:80/api/login/admin/", data)
+      .post("http://localhost:80/api/login/", data)
       .then(function (response) {
         
         // console.log(response.data.status);

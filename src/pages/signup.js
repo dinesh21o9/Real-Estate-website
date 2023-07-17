@@ -10,6 +10,7 @@ const Signup = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    page : "signup",
   });
   const [error, setError] = useState("");
 
@@ -33,10 +34,13 @@ const Signup = () => {
     }
 
     axios
-      .post("http://localhost:80/api/login/user/", data)
+      .post("http://localhost:80/api/login/", data)
       .then(function (response) {
         console.log(response.data);
-        setPage(true);
+        if(response.data.status)
+            setPage(true);
+        else
+          setError("Provided Email has an account!");
       })
       .catch((error) => {
         console.error("Error:", error);

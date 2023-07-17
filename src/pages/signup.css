@@ -32,10 +32,11 @@
 .signup-container input {
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 20px;
   border: 1px solid #ccc;
   width: 100%;
+  box-sizing: border-box;
 }
+
 
 .signup-container button {
   margin: 10px 0;
