@@ -47,19 +47,13 @@ function Header() {
               <a href="/#" className="navbar-link" data-nav-link>
                 Rent
               </a>
-            </li> */}
+            </li>    */}
             <li>
-              {/* <a href="/#" className="navbar-link" data-nav-link>
-                Post
-              </a> */}
               <NavLink to="/post" className="navbar-link" data-nav-link>
                 Post
               </NavLink>
             </li>
             <li>
-              {/* <a href="/#" className="navbar-link" data-nav-link>
-                Dashboard
-              </a> */}
               <NavLink to="/dashboard" className="navbar-link" data-nav-link>
                 Dashboard
               </NavLink>
