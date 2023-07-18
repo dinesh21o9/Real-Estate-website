@@ -26,6 +26,10 @@ const PropCard = (props) => {
         // Handle the error
       });
   };
+  
+  const handleView = () => {
+    
+  };
 
   const data ={
     cookie: window.token
@@ -88,6 +92,12 @@ const PropCard = (props) => {
       <div className="prop-card-field">
         <div className="prop-card-label">Parking availability:</div>
         <div className="prop-card-value">{parkingAvailable ? "Yes" : "No"}</div>
+      </div>
+
+      <div>
+        <button className="prop-card-button view-propcard-button" onClick={handleView}>
+          View
+        </button>
       </div>
 
       {/* Buttons */}

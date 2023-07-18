@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 // import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  var token = null;
   // const { setAuth } = useAuth();
   const [page, setPage] = useState(false);
   const [data, setData] = useState({
@@ -34,9 +33,9 @@ const Login = () => {
         
         // console.log(response.data.status);
         if(response.data.status){
-
-          window.token = response.data.token;
+          
           //jwt is in response.data.token
+          window.token = response.data.token;
           console.log(window.token);
           setPage(true);
         

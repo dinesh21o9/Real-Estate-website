@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import Swiper from "swiper/bundle";
-// import "swiper/swiper-bundle.min.css";
 import "./view_prop.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -19,16 +17,10 @@ const ViewProp = () => {
     // Fake data
     
     const dummyProperty = {
-      id: 1,
+      user_id: 1,
       property_name: "Adi emrald homes",
       address: "Jubliee hills, hyderabad",
       price: " 2,00,000/-",
-      user_id: 1,
-      image_01: "property-1.jpg",
-      image_02: ".public/assets/images/property-2.jpg",
-      image_03: "public\assets\images\property-3.jpg",
-      image_04: "public\assets\images\property-4.jpg",
-      image_05: "public\assets\images\property-5.jpg",
       type: "Apartment",
       offer: "Rent",
       date: "15-07-2023",
@@ -60,7 +52,7 @@ const ViewProp = () => {
     };
 
     const dummyUser = {
-      id: 1,
+      user_id: 1,
       name: " Dinesh surya",
       number: " 8121400482",
     };
@@ -69,31 +61,11 @@ const ViewProp = () => {
     setUser(dummyUser);
     setIsSaved(false);
 
-    initializeSwiper();
+    // initializeSwiper();
   };
 
   const handleSave = () => {
     setIsSaved(!isSaved);
-  };
-
-  const initializeSwiper = () => {
-    new Swiper(".images-container", {
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      loop: true,
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 0,
-        depth: 200,
-        modifier: 3,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    });
   };
 
   return (
@@ -105,16 +77,6 @@ const ViewProp = () => {
         <section className="view-property">
           <h1 className="heading">Property Details</h1>
           <div className="details">
-            <div className="swiper images-container">
-              <div className="swiper-wrapper">
-                <img src={`uploaded_files/${property.image_01}`} alt="" className="swiper-slide" />
-                {property.image_02 && <img src={`uploaded_files/${property.image_02}`} alt="" className="swiper-slide" />}
-                {property.image_03 && <img src={`uploaded_files/${property.image_03}`} alt="" className="swiper-slide" />}
-                {property.image_04 && <img src={`uploaded_files/${property.image_04}`} alt="" className="swiper-slide" />}
-                {property.image_05 && <img src={`uploaded_files/${property.image_05}`} alt="" className="swiper-slide" />}
-              </div>
-              <div className="swiper-pagination"></div>
-            </div>
             <h3 className="name">{property.property_name}</h3>
             <p className="location">
               <i className="fa fa-map-marker-alt"></i>

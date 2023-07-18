@@ -2,6 +2,13 @@
 body {
   background-color: rgb(244, 240, 240);
 }
+.submitted-prop-card{
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  margin-top: 100px;
+  text-align: center;
+}
 
 .post-card {
   width: 600px;
@@ -66,14 +73,38 @@ body {
   cursor: pointer;
 }
 
+.view-propcard-button{
+  background-color: rgba(33, 33, 255, 0.742);
+  margin-top: 10px;
+  color: white;
+  width: 100px;
+  outline-color: none;
+}
+
+.view-propcard-button:hover :focus{
+  background-color: rgba(33, 33, 255, 0.611);
+  outline-color: none;
+}
+
+.approve-button,
+.decline-button {
+  width: auto;
+  margin: 20px;
+  width: 100px;
+  color: #ffffff;
+}
+
 .approve-button {
   background-color: #28a745;
-  color: #ffffff;
+  margin-right: 5px;
 }
 
 .decline-button {
   background-color: #dc3545;
-  color: #ffffff;
+}
+
+.approve-button :focus{
+  background-color: #28a746ac;
 }
 
 .prop-card-buttons {
@@ -83,8 +114,4 @@ body {
   display: flex;
 }
 
-.approve-button,
-.decline-button {
-  width: auto;
-  margin: 10px;
-}
+

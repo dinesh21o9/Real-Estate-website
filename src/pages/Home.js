@@ -425,7 +425,7 @@ function Home() {
         </div>
 
       </footer>
-    <script src ="../src/index.js" type="text/jsx"></script>
+    <script src ="./HomeIndex.js" type="text/jsx"></script>
     </div>
   );
 }
