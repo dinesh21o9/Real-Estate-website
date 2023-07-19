@@ -1,5 +1,6 @@
 body{
   font-size: large;
+  background-color: rgb(254, 243, 243);
 }
 
 .post-card{
@@ -179,6 +180,16 @@ CSS for buttons
 
 .post-form .flex > .box {
   flex-basis: calc(50% - 10px);
+}
+.submitted-prop-card{
+  background-color: white;
+  color: black;
+  width: 500px;
+  margin-top: 100px;
+  text-align: center;
+  margin-left: 550px;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 @media (max-width: 768px) {

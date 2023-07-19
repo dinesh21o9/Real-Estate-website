@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+// import { useHistory } from 'react-router-dom';
 
 const PropCard = (props) => {
   const { name, description, cost, area, estimated_emi , direction, apartment_type, no_of_bathrooms, parkingAvailable } = props.property;
@@ -28,7 +29,10 @@ const PropCard = (props) => {
   };
   
   const handleView = () => {
-    
+    // const history = useHistory();
+
+    // Redirect to the "ViewProp" component/page and pass `prop_id` as a URL parameter
+    // history.push(`/viewProp/${props.prop_id}`);
   };
 
   const data ={

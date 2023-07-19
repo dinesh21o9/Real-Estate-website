@@ -71,7 +71,7 @@ const Login = () => {
                 name="email"
                 value={data.email}
                 onChange={handleChange}
-                className="input"
+                className="login-box"
             />
             </div>
 
@@ -83,7 +83,7 @@ const Login = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
-                className="input"
+                className="login-box"
             />
             </div>
 

@@ -8,7 +8,6 @@ import Login from "../pages/login";
 import Admin_Login from "../pages/Admin_login";
 import ViewProp from "../pages/view_prop";
 
-// import Admin_Approve from "../pages/Admin_Approve";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
 
           <Route path="adminLogin" element={<Admin_Login />} />
 
-          <Route path="viewProp" element={<ViewProp />} />
+          <Route path="/view-prop/:prop_id" element={<ViewProp />} />
 
           <Route path="*" element={<Error />} />
             

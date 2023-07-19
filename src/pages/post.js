@@ -12,6 +12,7 @@ const Post = () => {
     event.preventDefault();
 
     const {
+      cookie,
       property_name,
       price,
       deposite,
@@ -45,6 +46,7 @@ const Post = () => {
     } = event.target.elements;
 
     const values = {
+      cookie: window.token,
       property_name: property_name.value,
       price: price.value,
       deposite: deposite.value,
@@ -126,7 +128,7 @@ const Post = () => {
           <span className="prop-sub-message">
             Kindly wait till Admins approve your Property Post!
           </span>
-          <span>You can post another Property </span>
+          <span>You can <Link to="/post">Post another property</Link> or go to<Link to="/dashboard">Dashboard</Link></span>
         </div>
       ) : (
         <div className="post-card">

@@ -58,3 +58,6 @@
   .login-container p {
     color: red;
   }
+  .login-box{
+    width: 100%;
+  }

@@ -4,6 +4,12 @@ import PropCard from "../components/PropCard";
 import axios from "axios";
 import "./dashboard.css";
 
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 const Dashboard = () => {
   const [prop, setProp] = useState([]);
   const [filters, setFilters] = useState({
@@ -19,7 +25,16 @@ const Dashboard = () => {
   }, []);
 
   function getProp() {
-    axios.get("http://localhost:80/api/login/")
+    axios.get('http://localhost:80/api/login/')
+
+    // axios({
+    //   method: 'GET',
+    //   url: 'http://localhost:80/api/login/',
+    //   headers: {
+    //     'Authorization': 'Bearer ' + getCookie('jwtToken')
+    //   }
+    // })
+
     .then(function (response) {
       console.log(response.data);
       setProp(response.data);
