@@ -4,11 +4,47 @@ import { useState } from "react";
 // import { useHistory } from 'react-router-dom';
 
 const PropCard = (props) => {
-  const { name, description, cost, area, estimated_emi , direction, apartment_type, no_of_bathrooms, parkingAvailable } = props.property;
+  const {
+    address,
+    admin_id,
+    age,
+    balcony,
+    bathroom,
+    bedroom,
+    bhk,
+    carpet,
+    deposite, // Updated field name
+    description,
+    furnished, // Updated field name
+    garden,
+    gym,
+    hospital,
+    lift,
+    loan,
+    market_area,
+    offer,
+    parking_area,
+    play_ground,
+    power_backup,
+    price,
+    prop_id,
+    property_name,
+    room_floor,
+    school,
+    security_guard,
+    shopping_mall,
+    status,
+    total_floors,
+    type,
+    user_id,
+    user_name,
+    water_supply,
+  } = props.property;
 
   const handleApprove = () => {
     // Send an API request to update the property status as approved
-    axios.put('/api/updatePropertyStatus', { put_prop_id: props.propertyData.id, status: 'approved' })
+    axios
+      .put('/api/updatePropertyStatus', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
       .then(response => {
         // Handle the response
       })
@@ -19,7 +55,8 @@ const PropCard = (props) => {
 
   const handleDecline = () => {
     // Send an API request to delete the corresponding property
-    axios.delete(`/api/deleteProperty/${props.propertyData.id}`)
+    axios
+      .delete(`/api/deleteProperty/${prop_id}`) // Use prop_id directly
       .then(response => {
         // Handle the response
       })
@@ -27,35 +64,39 @@ const PropCard = (props) => {
         // Handle the error
       });
   };
-  
+
   const handleView = () => {
     // const history = useHistory();
 
     // Redirect to the "ViewProp" component/page and pass `prop_id` as a URL parameter
-    // history.push(`/viewProp/${props.prop_id}`);
+    // history.push(`/viewProp/${prop_id}`);
   };
 
-  const data ={
-    cookie: window.token
+  const data = {
+    cookie: window.token,
   };
 
-  const [admin,setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false);
 
   axios
-    .post('http://localhost:80/api/property/',data)
-    .then(function(response){
+    .post('http://localhost:80/api/property/', data)
+    .then(function (response) {
       // console.log(response.data);
-      if(response.data.status){
-          setAdmin(true);
+      if (response.data.status) {
+        setAdmin(true);
       }
     });
-
 
   return (
     <div className="prop-card">
       <div className="prop-card-field">
         <div className="prop-card-label">Name:</div>
-        <div className="prop-card-value">{name}</div>
+        <div className="prop-card-value">{property_name}</div> 
+      </div>
+
+      <div className="prop-card-field">
+        <div className="prop-card-label">Address:</div>
+        <div className="prop-card-value">{address}</div>
       </div>
 
       <div className="prop-card-field">
@@ -65,46 +106,36 @@ const PropCard = (props) => {
 
       <div className="prop-card-field">
         <div className="prop-card-label">Cost:</div>
-        <div className="prop-card-value">{cost}</div>
+        <div className="prop-card-value">{price}</div>
       </div>
 
       <div className="prop-card-field">
         <div className="prop-card-label">Area in sq ft:</div>
-        <div className="prop-card-value">{area}</div>
+        <div className="prop-card-value">{carpet}</div> 
       </div>
 
       <div className="prop-card-field">
-        <div className="prop-card-label">Estimated EMI:</div>
-        <div className="prop-card-value">{estimated_emi}</div>
-      </div>
-
-      <div className="prop-card-field">
-        <div className="prop-card-label">Direction facing:</div>
-        <div className="prop-card-value">{direction}</div>
-      </div>
-
-      <div className="prop-card-field">
-        <div className="prop-card-label">Apartment Type:</div>
-        <div className="prop-card-value">{apartment_type}</div>
+        <div className="prop-card-label">BHK:</div>
+        <div className="prop-card-value">{bhk}</div>
       </div>
 
       <div className="prop-card-field">
         <div className="prop-card-label">No of Bathrooms:</div>
-        <div className="prop-card-value">{no_of_bathrooms}</div>
+        <div className="prop-card-value">{bathroom}</div>
       </div>
 
       <div className="prop-card-field">
         <div className="prop-card-label">Parking availability:</div>
-        <div className="prop-card-value">{parkingAvailable ? "Yes" : "No"}</div>
+        <div className="prop-card-value">{parking_area ? "Yes" : "No"}</div>
       </div>
 
+      {/* Buttons */}
       <div>
         <button className="prop-card-button view-propcard-button" onClick={handleView}>
           View
         </button>
       </div>
 
-      {/* Buttons */}
       {admin && (
         <div className="prop-card-buttons">
           <button className="prop-card-button approve-button" onClick={handleApprove}>
@@ -115,7 +146,6 @@ const PropCard = (props) => {
           </button>
         </div>
       )}
-      
     </div>
   );
 };

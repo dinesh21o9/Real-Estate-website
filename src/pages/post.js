@@ -128,7 +128,7 @@ const Post = () => {
           <span className="prop-sub-message">
             Kindly wait till Admins approve your Property Post!
           </span>
-          <span>You can <Link to="/post">Post another property</Link> or go to<Link to="/dashboard">Dashboard</Link></span>
+          <span>You can now<Link class="link" to="/post">Post</Link> or go to<Link class="link" to="/dashboard">Dashboard</Link></span>
         </div>
       ) : (
         <div className="post-card">
