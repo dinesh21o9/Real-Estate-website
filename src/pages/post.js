@@ -132,59 +132,59 @@ const Post = () => {
         <div className="post-card">
           <form className="post-form" onSubmit={handleSubmit}>
             <div className="box">
-              <p>property name <span>*</span></p>
-              <input type="text" name="property_name" required maxLength="50" placeholder="enter property name" className="input" />
+              <p>Property name <span>*</span></p>
+              <input type="text" name="property_name" required maxLength="50" placeholder="Enter property name" className="input" />
             </div>
             <div className="flex">
               <div className="box">
-                <p>property price <span>*</span></p>
-                <input type="number" name="price" required min="0" max="9999999999" maxLength="10" placeholder="enter property price" className="input" />
+                <p>Property price <span>*</span></p>
+                <input type="number" name="price" required min="0" max="9999999999" maxLength="10" placeholder="Enter property price" className="input" />
               </div>
               <div className="box">
-                <p>deposite amount <span>*</span></p>
-                <input type="number" name="deposite" required min="0" max="9999999999" maxLength="10" placeholder="enter deposite amount" className="input" />
+                <p>Deposite amount <span>*</span></p>
+                <input type="number" name="deposite" required min="0" max="9999999999" maxLength="10" placeholder="Enter deposite amount" className="input" />
               </div>
               <div className="box">
-                <p>property address <span>*</span></p>
-                <input type="text" name="address" required maxLength="100" placeholder="enter property full address" className="input" />
+                <p>Property address <span>*</span></p>
+                <input type="text" name="address" required maxLength="100" placeholder="Enter property full address" className="input" />
               </div>
               <div className="box">
-                <p>offer type <span>*</span></p>
+                <p>Offer type <span>*</span></p>
                 <select name="offer" required className="input">
                   <option value="" selected>Select Offer Type</option>
-                  <option value="sale">sale</option>
-                  <option value="resale">resale</option>
-                  <option value="rent">rent</option>
+                  <option value="sale">Sale</option>
+                  <option value="resale">Resale</option>
+                  <option value="rent">Rent</option>
                 </select>
               </div>
               <div className="box">
-                <p>property type <span>*</span></p>
+                <p>Property type <span>*</span></p>
                 <select name="type" required className="input">
                   <option value="" selected>Select Property Type</option>
-                  <option value="flat">flat</option>
-                  <option value="house">house</option>
-                  <option value="shop">shop</option>
+                  <option value="flat">Flat</option>
+                  {/* <option value="house">house</option>
+                  <option value="shop">shop</option> */}
                 </select>
               </div>
               <div className="box">
-                <p>property status <span>*</span></p>
+                <p>Property status <span>*</span></p>
                 <select name="status" required className="input">
                   <option value="" selected>Select Property Status</option>
-                  <option value="ready to move">ready to move</option>
-                  <option value="under construction">under construction</option>
+                  <option value="ready to move">Ready to move</option>
+                  <option value="under construction">Under construction</option>
                 </select>
               </div>
               <div className="box">
-                <p>furnished status <span>*</span></p>
+                <p>Furnished status <span>*</span></p>
                 <select name="furnished" required className="input">
                   <option value="" selected>Select Furnished Status</option>
-                  <option value="furnished">furnished</option>
-                  <option value="semi-furnished">semi-furnished</option>
-                  <option value="unfurnished">unfurnished</option>
+                  <option value="furnished">Furnished</option>
+                  <option value="semi-furnished">Semi-furnished</option>
+                  <option value="unfurnished">Unfurnished</option>
                 </select>
               </div>
               <div className="box">
-                <p>how many BHK <span>*</span></p>
+                <p>How many BHK <span>*</span></p>
                 <select name="bhk" required className="input">
                   <option value="" selected>Select BHK</option>
                   <option value="1">1 BHK</option>
@@ -199,7 +199,7 @@ const Post = () => {
                 </select>
               </div>
               <div className="box">
-                <p>how many bedrooms <span>*</span></p>
+                <p>How many bedrooms <span>*</span></p>
                 <select name="bedroom" required className="input">
                   <option value="" selected>Select Number of Bedrooms</option>
                   <option value="0">0 bedroom</option>
@@ -215,7 +215,7 @@ const Post = () => {
                 </select>
               </div>
               <div className="box">
-                <p>how many bathrooms <span>*</span></p>
+                <p>How many bathrooms <span>*</span></p>
                 <select name="bathroom" required className="input">
                   <option value="" selected>Select Number of Bathrooms</option>
                   <option value="1">1 bathroom</option>
@@ -230,7 +230,7 @@ const Post = () => {
                 </select>
               </div>
               <div className="box">
-                <p>how many balconies <span>*</span></p>
+                <p>How many balconies <span>*</span></p>
                 <select name="balcony" required className="input">
                   <option value="" selected>Select Number of Balconies</option>
                   <option value="0">0 balcony</option>
@@ -246,50 +246,74 @@ const Post = () => {
                 </select>
               </div>
               <div className="box">
-                <p>carpet area <span>*</span></p>
-                <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="how many square feet?" className="input" />
+                <p>Carpet area <span>*</span></p>
+                <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="How many square feet?" className="input" />
               </div>
               <div className="box">
-                <p>property age <span>*</span></p>
-                <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="how old is the property?" className="input" />
+                <p>Property age <span>*</span></p>
+                <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="How old is the property?" className="input" />
               </div>
               <div className="box">
-                <p>total floors <span>*</span></p>
-                <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="how many floors available?" className="input" />
+                <p>Total floors <span>*</span></p>
+                <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="How many floors available?" className="input" />
               </div>
               <div className="box">
-                <p>floor room <span>*</span></p>
-                <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="property floor number" className="input" />
+                <p>Floor room <span>*</span></p>
+                <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="Property floor number" className="input" />
               </div>
               <div className="box">
-                <p>loan <span>*</span></p>
+                <p>Loan <span>*</span></p>
                 <select name="loan" required className="input">
                   <option value="" selected>Select Loan Availability</option>
-                  <option value="available">available</option>
-                  <option value="not available">not available</option>
+                  <option value="available">Available</option>
+                  <option value="not available">Not available</option>
                 </select>
               </div>
             </div>
             <div className="box">
-              <p>property description <span>*</span></p>
-              <textarea name="description" maxLength="1000" className="input" required cols="30" rows="10" placeholder="write about the property..."></textarea>
+              <p>Property description <span>*</span></p>
+              <textarea name="description" maxLength="1000" className="input" required cols="3" rows="3" placeholder="Your description about the property.."></textarea>
             </div>
             <div className="checkbox">
               <div className="box">
-                <p><input type="checkbox" name="lift" value="yes" />lifts</p>
-                <p><input type="checkbox" name="security_guard" value="yes" />security guard</p>
-                <p><input type="checkbox" name="play_ground" value="yes" />play ground</p>
-                <p><input type="checkbox" name="garden" value="yes" />garden</p>
-                <p><input type="checkbox" name="water_supply" value="yes" />water supply</p>
-                <p><input type="checkbox" name="power_backup" value="yes" />power backup</p>
+                <label>
+                  <p>Lifts<input type="checkbox" name="lift" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Security guard<input type="checkbox" name="security_guard" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Play ground<input type="checkbox" name="play_ground" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Garden<input type="checkbox" name="garden" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Water supply<input type="checkbox" name="water_supply" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Power backup<input type="checkbox" name="power_backup" value="yes" /></p>
+                </label>
               </div>
               <div className="box">
-                <p><input type="checkbox" name="parking_area" value="yes" />parking area</p>
-                <p><input type="checkbox" name="gym" value="yes" />gym</p>
-                <p><input type="checkbox" name="shopping_mall" value="yes" />shopping mall</p>
-                <p><input type="checkbox" name="hospital" value="yes" />hospital</p>
-                <p><input type="checkbox" name="school" value="yes" />school</p>
-                <p><input type="checkbox" name="market_area" value="yes" />market area</p>
+                <label>
+                  <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
+                </label>
+                <label>
+                  <p>School<input type="checkbox" name="school" value="yes" /></p>
+                </label>
+                <label>
+                  <p>Market area<input type="checkbox" name="market_area" value="yes" /></p>
+                </label>
               </div>
             </div>
             {error && <p className="error">{error}</p>}
