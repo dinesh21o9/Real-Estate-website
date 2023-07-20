@@ -27,7 +27,7 @@ function App() {
 
           <Route path="adminLogin" element={<Admin_Login />} />
 
-          <Route path="/view-prop/:prop_id" element={<ViewProp />} />
+          <Route path="/viewProp/:prop_id" element={<ViewProp />} />
 
           <Route path="*" element={<Error />} />
             

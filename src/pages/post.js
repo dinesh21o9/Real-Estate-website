@@ -12,7 +12,6 @@ const Post = () => {
     event.preventDefault();
 
     const {
-      cookie,
       property_name,
       price,
       deposite,
@@ -47,6 +46,7 @@ const Post = () => {
 
     const values = {
       cookie: window.token,
+      page:'post',
       property_name: property_name.value,
       price: price.value,
       deposite: deposite.value,
@@ -155,7 +155,6 @@ const Post = () => {
                 <select name="offer" required className="input">
                   <option value="" selected>Select Offer Type</option>
                   <option value="sale">Sale</option>
-                  <option value="resale">Resale</option>
                   <option value="rent">Rent</option>
                 </select>
               </div>

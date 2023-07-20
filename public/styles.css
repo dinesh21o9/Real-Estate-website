@@ -364,7 +364,7 @@ body {
 
 .hero-form :is(.input-field, .dropdown-list) {
   height: 70px;
-  /* border: 1px solid var(--gainsboro); */
+  border: 1px solid var(--gainsboro);
   border-radius: var(--radius-4);
   outline: none;
   transition: var(--transition);

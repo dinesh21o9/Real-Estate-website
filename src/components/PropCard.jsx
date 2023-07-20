@@ -1,44 +1,19 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-// import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const PropCard = (props) => {
   const {
     address,
-    admin_id,
-    age,
-    balcony,
     bathroom,
-    bedroom,
     bhk,
     carpet,
-    deposite, // Updated field name
     description,
-    furnished, // Updated field name
-    garden,
-    gym,
-    hospital,
-    lift,
-    loan,
-    market_area,
-    offer,
     parking_area,
-    play_ground,
-    power_backup,
     price,
     prop_id,
     property_name,
-    room_floor,
-    school,
-    security_guard,
-    shopping_mall,
-    status,
-    total_floors,
-    type,
-    user_id,
-    user_name,
-    water_supply,
   } = props.property;
 
   const handleApprove = () => {
@@ -64,12 +39,12 @@ const PropCard = (props) => {
         // Handle the error
       });
   };
+  const navigate = useNavigate();
 
   const handleView = () => {
-    // const history = useHistory();
-
+    // console.log(prop_id);
     // Redirect to the "ViewProp" component/page and pass `prop_id` as a URL parameter
-    // history.push(`/viewProp/${prop_id}`);
+    navigate(`/viewProp/${prop_id}`);
   };
 
   const data = {

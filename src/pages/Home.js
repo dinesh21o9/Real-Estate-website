@@ -48,7 +48,7 @@ function Home() {
                 <form action="" class="hero-form">
 
                   <div class="input-wrapper">
-                    <input type="search" name="search" id="search" placeholder="Search your home" required class="input-field"/>
+                    <input  type="search" name="search" id="search" placeholder="Search your home" required class="input-field"/>
                     <ion-icon name="search-outline"></ion-icon>
                   </div>
 
