@@ -10,6 +10,73 @@ const Post = () => {
 
   const [selectedOffer, setSelectedOffer] =useState("");
 
+  const rentFields = [
+    "property_name",
+    "rent",
+    "security_deposite",
+    "address",
+    "offer",
+    "type",
+    "status",
+    "furnished",
+    "bhk",
+    "bedroom",
+    "bathroom",
+    "balcony",
+    "carpet",
+    "age",
+    "total_floors",
+    "room_floor",
+    "description",
+    "lift",
+    "security_guard",
+    "play_ground",
+    "garden",
+    "water_supply",
+    "power_backup",
+    "parking_area",
+    "gym",
+    "shopping_mall",
+    "hospital",
+    "school",
+    "market_area",
+  ];
+
+  const saleFields = [
+    "property_name",
+    "price",
+    "deposite",
+    "address",
+    "offer",
+    "type",
+    "status",
+    "furnished",
+    "bhk",
+    "bedroom",
+    "bathroom",
+    "balcony",
+    "carpet",
+    "age",
+    "total_floors",
+    "room_floor",
+    "loan",
+    "description",
+    "lift",
+    "security_guard",
+    "play_ground",
+    "garden",
+    "water_supply",
+    "power_backup",
+    "parking_area",
+    "gym",
+    "shopping_mall",
+    "hospital",
+    "school",
+    "market_area",
+  ];
+  
+  
+
   const handleOfferChange = (e) =>{
     setSelectedOffer(e.target.value);
   }
@@ -199,6 +266,28 @@ const Post = () => {
     //   setError("Please fill in all the fields*");
     //   return;
     // }
+    
+    const values = {
+      cookie: window.token,
+      page: "post",
+    }
+
+
+    const offerFields = selectedOffer === "sale" ? saleFields : rentFields;
+
+    offerFields.forEach((field) => {
+      values[field] = event.target.elements[field].value;
+    });
+
+    const requiredFields = [
+      ...offerFields
+    ];
+
+
+    if (requiredFields.some((field) => !values[field])) {
+      setError("Please fill in all the fields*");
+      return;
+    }
 
     axios
       .post("http://localhost:80/api/property/", values)
