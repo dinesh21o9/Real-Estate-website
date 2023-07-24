@@ -6,21 +6,24 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from "axios";
 
 const ViewProp = () => {
-  const [property, setProperty] = useState(null);
-  const [user, setUser] = useState(null);
+  const [property, setProperty] = useState({});
+  const [user, setUser] = useState({});
   const [isSaved, setIsSaved] = useState(false);
-  const { prop_id } = useParams();
+  
+  //Used to get offer and prop_id which are in link
+  const { offer, prop_id } = useParams();
 
   useEffect(() => {
-    getProperty(prop_id);
-  }, [prop_id]);
+    getProperty(prop_id,offer);
+  }, [prop_id,offer]);
 
-  const getProperty = (propId) => {
+  const getProperty = (propId, offer) => {
     axios
-      .post("http://localhost:80/api/property/",{
-        prop_id: prop_id, 
-        page: 'viewProp' 
-    })
+      .post("http://localhost:80/api/property/", {
+        prop_id: propId,
+        offer: offer,
+        page: 'viewProp',
+      })
       .then((response) => {
         console.log(response.data);
         setProperty(response.data);

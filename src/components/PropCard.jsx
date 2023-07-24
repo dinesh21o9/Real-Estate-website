@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PropCard = (props) => {
   const {
+    offer,
     address,
     bathroom,
     bhk,
@@ -19,7 +20,7 @@ const PropCard = (props) => {
   const handleApprove = () => {
     // Send an API request to update the property status as approved
     axios
-      .put('/api/updatePropertyStatus', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
+      .put('/api/property', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
       .then(response => {
         // Handle the response
       })
@@ -31,7 +32,7 @@ const PropCard = (props) => {
   const handleDecline = () => {
     // Send an API request to delete the corresponding property
     axios
-      .delete(`/api/deleteProperty/${prop_id}`) // Use prop_id directly
+      .delete(`/api/property/${prop_id}`) // Use prop_id directly
       .then(response => {
         // Handle the response
       })
@@ -39,12 +40,12 @@ const PropCard = (props) => {
         // Handle the error
       });
   };
+
   const navigate = useNavigate();
 
-  const handleView = () => {
-    // console.log(prop_id);
-    // Redirect to the "ViewProp" component/page and pass `prop_id` as a URL parameter
-    navigate(`/viewProp/${prop_id}`);
+  const handleView = (offer, prop_id) => {
+    // Redirect to the "ViewProp" component/page and pass `prop_id` and `offer` as URL parameters
+    navigate(`/viewProp/${offer}/${prop_id}`);
   };
 
   const data = {
@@ -80,6 +81,11 @@ const PropCard = (props) => {
       </div>
 
       <div className="prop-card-field">
+        <div className="prop-card-label">Offer:</div>
+        <div className="prop-card-value">{offer}</div>
+      </div>
+
+      <div className="prop-card-field">
         <div className="prop-card-label">Cost:</div>
         <div className="prop-card-value">{price}</div>
       </div>
@@ -106,7 +112,7 @@ const PropCard = (props) => {
 
       {/* Buttons */}
       <div>
-        <button className="prop-card-button view-propcard-button" onClick={handleView}>
+        <button className="prop-card-button view-propcard-button" onClick={() => handleView(offer, prop_id)}>
           View
         </button>
       </div>
