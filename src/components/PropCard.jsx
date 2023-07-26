@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const PropCard = (props) => {
   const {
+    rent,
     offer,
     address,
     bathroom,
@@ -65,50 +66,92 @@ const PropCard = (props) => {
 
   return (
     <div className="prop-card">
-      <div className="prop-card-field">
-        <div className="prop-card-label">Name:</div>
-        <div className="prop-card-value">{property_name}</div> 
-      </div>
+      {offer === "sale" && (
+      <div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Name:</div>
+          <div className="prop-card-value">{property_name}</div> 
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Address:</div>
-        <div className="prop-card-value">{address}</div>
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Address:</div>
+          <div className="prop-card-value">{address}</div>
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Description:</div>
-        <div className="prop-card-value">{description}</div>
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Description:</div>
+          <div className="prop-card-value">{description}</div>
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Offer:</div>
-        <div className="prop-card-value">{offer}</div>
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Cost:</div>
+          <div className="prop-card-value">{price}</div>
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Cost:</div>
-        <div className="prop-card-value">{price}</div>
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Area in sq ft:</div>
+          <div className="prop-card-value">{carpet}</div> 
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Area in sq ft:</div>
-        <div className="prop-card-value">{carpet}</div> 
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">BHK:</div>
+          <div className="prop-card-value">{bhk}</div>
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">BHK:</div>
-        <div className="prop-card-value">{bhk}</div>
-      </div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">No of Bathrooms:</div>
+          <div className="prop-card-value">{bathroom}</div>
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">No of Bathrooms:</div>
-        <div className="prop-card-value">{bathroom}</div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Parking availability:</div>
+          <div className="prop-card-value">{parking_area ? "Yes" : "No"}</div>
+        </div>
       </div>
+      )}
+      {offer === "rent" && (
+      <div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Name:</div>
+          <div className="prop-card-value">{property_name}</div> 
+        </div>
 
-      <div className="prop-card-field">
-        <div className="prop-card-label">Parking availability:</div>
-        <div className="prop-card-value">{parking_area ? "Yes" : "No"}</div>
+        <div className="prop-card-field">
+          <div className="prop-card-label">Address:</div>
+          <div className="prop-card-value">{address}</div>
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">Description:</div>
+          <div className="prop-card-value">{description}</div>
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">Rent:</div>
+          <div className="prop-card-value">{rent}</div>
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">Area in sq ft:</div>
+          <div className="prop-card-value">{carpet}</div> 
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">BHK:</div>
+          <div className="prop-card-value">{bhk}</div>
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">No of Bathrooms:</div>
+          <div className="prop-card-value">{bathroom}</div>
+        </div>
+
+        <div className="prop-card-field">
+          <div className="prop-card-label">Parking availability:</div>
+          <div className="prop-card-value">{parking_area ? "Yes" : "No"}</div>
+        </div>
       </div>
+      )}
 
       {/* Buttons */}
       <div>

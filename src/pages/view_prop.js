@@ -25,48 +25,13 @@ const ViewProp = () => {
         page: 'viewProp',
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setProperty(response.data);
       })
       .catch((error) => {
         console.error("Error fetching property data:", error);
       });
 
-    // Fake data
-    // const dummyProperty = {
-    //   prop_id: 2,
-    //   property_name: "Adi emrald homes",
-    //   address: "Jubliee hills, hyderabad",
-    //   price: " 2,00,000/-",
-    //   type: "Apartment",
-    //   offer: "Rent",
-    //   date: "15-07-2023",
-    //   bhk: 3,
-    //   deposite: " 10,000/-",
-    //   status: "Constructed",
-    //   bedroom: 3,
-    //   bathroom: 2,
-    //   balcony: 1,
-    //   carpet: 1500,
-    //   age: 5,
-    //   total_floors: 10,
-    //   room_floor: 5,
-    //   furnished: "Yes",
-    //   loan: "Yes",
-    //   lift: "Yes",
-    //   security_guard: "No",
-    //   play_ground: "Yes",
-    //   garden: "No",
-    //   water_supply: "Yes",
-    //   power_backup: "No",
-    //   parking_area: "Yes",
-    //   gym: "No",
-    //   shopping_mall: "Yes",
-    //   hospital: "No",
-    //   school: "Yes",
-    //   market_area: "No",
-    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    // };
 
     const dummyUser = {
       user_id: 1,
@@ -74,7 +39,7 @@ const ViewProp = () => {
       number: " 8121400482",
     };
 
-    // setProperty(dummyProperty);
+  
     setUser(dummyUser);
     setIsSaved(false);
 
@@ -255,6 +220,7 @@ const ViewProp = () => {
             </form>
           </div>
         </section>
+
       )}
     </div>
   );

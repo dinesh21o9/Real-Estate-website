@@ -2,45 +2,16 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import DynamicFields from "../components/Dynamic_input";
 import "./Post.css";
+
 
 const Post = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [inputValues, setInputValues] = useState({})
 
   const [selectedOffer, setSelectedOffer] =useState("");
-
-  const rentFields = [
-    "property_name",
-    "rent",
-    "security_deposite",
-    "address",
-    "offer",
-    "type",
-    "status",
-    "furnished",
-    "bhk",
-    "bedroom",
-    "bathroom",
-    "balcony",
-    "carpet",
-    "age",
-    "total_floors",
-    "room_floor",
-    "description",
-    "lift",
-    "security_guard",
-    "play_ground",
-    "garden",
-    "water_supply",
-    "power_backup",
-    "parking_area",
-    "gym",
-    "shopping_mall",
-    "hospital",
-    "school",
-    "market_area",
-  ];
 
   const saleFields = [
     "property_name",
@@ -74,220 +45,125 @@ const Post = () => {
     "school",
     "market_area",
   ];
+
+  const rentFields = [
+    { type: 'number', label: 'Rent', name: 'rent', required: true, min: 0, max: 9999999999, maxLength: 10, placeholder: 'Enter Rent per month' },
+    { type: 'number', label: 'Security Deposit', name: 'security_deposit', required: true, min: 0, max: 9999999999, maxLength: 10, placeholder: 'Enter Security deposit amount' },
+    { type: 'text', label: 'Address', name: 'address', required: true, maxLength: 100, placeholder: 'Enter property full address' },
+    { type: 'select', label: 'Property Type', name: 'type', required: true, options: [
+      { value: '', label: 'Select Property Type' },
+      { value: 'flat', label: 'Flat' },
+      { value: 'house', label: 'House' },
+      { value: 'shop', label: 'Shop' },
+    ]},
+    { type: 'select', label: 'Status', name: 'status', required: true, options: [
+      { value: '', label: 'Select Property Status' },
+      { value: 'ready to move', label: 'Ready to move' },
+      { value: 'under construction', label: 'Under construction' },
+    ]},
+    { type: 'select', label: 'Furnished Status', name: 'furnished', required: true, options: [
+      { value: '', label: 'Select Furnished Status' },
+      { value: 'furnished', label: 'Furnished' },
+      { value: 'semi-furnished', label: 'Semi-furnished' },
+      { value: 'unfurnished', label: 'Unfurnished' },
+    ]},
+    { type: 'select', label: 'How many BHK', name: 'bhk', required: true, options: [
+      { value: '', label: 'Select BHK' },
+      { value: '1', label: '1 BHK' },
+      { value: '2', label: '2 BHK' },
+      { value: '3', label: '3 BHK' },
+      { value: '4', label: '4 BHK' },
+      { value: '5', label: '5 BHK' },
+    ]},
+    { type: 'select', label: 'How many bedrooms', name: 'bedroom', required: true, options: [
+      { value: '', label: 'Select Number of Bedrooms' },
+      { value: '0', label: '0 bedroom' },
+      { value: '1', label: '1 bedroom' },
+      { value: '2', label: '2 bedrooms' },
+      { value: '3', label: '3 bedrooms' },
+      { value: '4', label: '4 bedrooms' },
+      { value: '5', label: '5 bedrooms' },
+    ]},
+    { type: 'select', label: 'How many bathrooms', name: 'bathroom', required: true, options: [
+      { value: '', label: 'Select Number of Bathrooms' },
+      { value: '1', label: '1 bathroom' },
+      { value: '2', label: '2 bathrooms' },
+      { value: '3', label: '3 bathrooms' },
+      { value: '4', label: '4 bathrooms' },
+      { value: '5', label: '5 bathrooms' },
+    ]},
+    { type: 'select', label: 'How many balconies', name: 'balcony', required: true, options: [
+      { value: '', label: 'Select Number of Balconies' },
+      { value: '0', label: '0 balcony' },
+      { value: '1', label: '1 balcony' },
+      { value: '2', label: '2 balconies' },
+      { value: '3', label: '3 balconies' },
+      { value: '4', label: '4 balconies' },
+      { value: '5', label: '5 balconies' },
+    ]},
+    { type: 'number', label: 'Carpet Area', name: 'carpet', required: true, min: 1, max: 9999999999, maxLength: 10, placeholder: 'How many square feet?' },
+    { type: 'number', label: 'Property Age', name: 'age', required: true, min: 0, max: 99, maxLength: 2, placeholder: 'How old is the property?' },
+    { type: 'number', label: 'Total Floors', name: 'total_floors', required: true, min: 0, max: 99, maxLength: 2, placeholder: 'How many floors available?' },
+    { type: 'number', label: 'Floor Room', name: 'room_floor', required: true, min: 0, max: 99, maxLength: 2, placeholder: 'Property floor number' },
+    { type: 'checkbox', label: 'Lifts', name: 'lift' },
+    { type: 'checkbox', label: 'Security Guard', name: 'security_guard' },
+    { type: 'checkbox', label: 'Play Ground', name: 'play_ground' },
+    { type: 'checkbox', label: 'Garden', name: 'garden' },
+    { type: 'checkbox', label: 'Water Supply', name: 'water_supply' },
+    { type: 'checkbox', label: 'Power Backup', name: 'power_backup' },
+    { type: 'checkbox', label: 'Parking Area', name: 'parking_area' },
+    { type: 'checkbox', label: 'Gym', name: 'gym' },
+    { type: 'checkbox', label: 'Shopping Mall', name: 'shopping_mall' },
+    { type: 'checkbox', label: 'Hospital', name: 'hospital' },
+    { type: 'checkbox', label: 'School', name: 'school' },
+    { type: 'checkbox', label: 'Market Area', name: 'market_area' },
+  ];
   
+  const offerFields = {
+    rent: rentFields,
+    // Add more offer types as needed
+  };
   
+  const selectedFields = offerFields[selectedOffer];
 
   const handleOfferChange = (e) =>{
     setSelectedOffer(e.target.value);
+    setInputValues({});
   }
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Sale block
-
-    // const {
-    //   property_name,
-    //   price,
-    //   deposite,
-    //   address,
-    //   offer,
-    //   type,
-    //   status,
-    //   furnished,
-    //   bhk,
-    //   bedroom,
-    //   bathroom,
-    //   balcony,
-    //   carpet,
-    //   age,
-    //   total_floors,
-    //   room_floor,
-    //   loan,
-    //   description,
-    //   lift,
-    //   security_guard,
-    //   play_ground,
-    //   garden,
-    //   water_supply,
-    //   power_backup,
-    //   parking_area,
-    //   gym,
-    //   shopping_mall,
-    //   hospital,
-    //   school,
-    //   market_area
-    // } = event.target.elements;
-
-    // const values = {
-    //   cookie: window.token,
-    //   page:'post',
-    //   property_name: property_name.value,
-    //   price: price.value,
-    //   deposite: deposite.value,
-    //   address: address.value,
-    //   offer: offer.value,
-    //   type: type.value,
-    //   status: status.value,
-    //   furnished: furnished.value,
-    //   bhk: bhk.value,
-    //   bedroom: bedroom.value,
-    //   bathroom: bathroom.value,
-    //   balcony: balcony.value,
-    //   carpet: carpet.value,
-    //   age: age.value,
-    //   total_floors: total_floors.value,
-    //   room_floor: room_floor.value,
-    //   loan: loan.value,
-    //   description: description.value,
-    //   lift: lift.checked ? "Yes" : "No",
-    //   security_guard: security_guard.checked ? "Yes" : "No",
-    //   play_ground: play_ground.checked ? "Yes" : "No",
-    //   garden: garden.checked ? "Yes" : "No",
-    //   water_supply: water_supply.checked ? "Yes" : "No",
-    //   power_backup: power_backup.checked ? "Yes" : "No",
-    //   parking_area: parking_area.checked ? "Yes" : "No",
-    //   gym: gym.checked ? "Yes" : "No",
-    //   shopping_mall: shopping_mall.checked ? "Yes" : "No",
-    //   hospital: hospital.checked ? "Yes" : "No",
-    //   school: school.checked ? "Yes" : "No",
-    //   market_area: market_area.checked ? "Yes" : "No"
-    // };
-
-    // if (
-    //   !values.property_name ||
-    //   !values.price ||
-    //   !values.address ||
-    //   !values.offer ||
-    //   !values.type ||
-    //   !values.status ||
-    //   !values.furnished ||
-    //   !values.bhk ||
-    //   !values.bedroom ||
-    //   !values.bathroom ||
-    //   !values.balcony ||
-    //   !values.carpet ||
-    //   !values.age ||
-    //   !values.total_floors ||
-    //   !values.room_floor ||
-    //   !values.loan ||
-    //   !values.description
-    // ) {
-    //   setError("Please fill in all the fields*");
-    //   return;
-    // }
-
-    // Rent block
-
-    // const {
-    //   property_name,
-    //   rent,
-    //   security_deposite,
-    //   address,
-    //   offer,
-    //   type,
-    //   status,
-    //   furnished,
-    //   bhk,
-    //   bedroom,
-    //   bathroom,
-    //   balcony,
-    //   carpet,
-    //   age,
-    //   total_floors,
-    //   room_floor,
-    //   description,
-    //   lift,
-    //   security_guard,
-    //   play_ground,
-    //   garden,
-    //   water_supply,
-    //   power_backup,
-    //   parking_area,
-    //   gym,
-    //   shopping_mall,
-    //   hospital,
-    //   school,
-    //   market_area
-    // } = event.target.elements;
-
-    // const values = {
-    //   cookie: window.token,
-    //   page:'post',
-    //   property_name: property_name.value,
-    //   rent: rent.value,
-    //   security_deposite: security_deposite.value,
-    //   address: address.value,
-    //   offer: offer.value,
-    //   type: type.value,
-    //   status: status.value,
-    //   furnished: furnished.value,
-    //   bhk: bhk.value,
-    //   bedroom: bedroom.value,
-    //   bathroom: bathroom.value,
-    //   balcony: balcony.value,
-    //   carpet: carpet.value,
-    //   age: age.value,
-    //   total_floors: total_floors.value,
-    //   room_floor: room_floor.value,
-    //   description: description.value,
-    //   lift: lift.checked ? "Yes" : "No",
-    //   security_guard: security_guard.checked ? "Yes" : "No",
-    //   play_ground: play_ground.checked ? "Yes" : "No",
-    //   garden: garden.checked ? "Yes" : "No",
-    //   water_supply: water_supply.checked ? "Yes" : "No",
-    //   power_backup: power_backup.checked ? "Yes" : "No",
-    //   parking_area: parking_area.checked ? "Yes" : "No",
-    //   gym: gym.checked ? "Yes" : "No",
-    //   shopping_mall: shopping_mall.checked ? "Yes" : "No",
-    //   hospital: hospital.checked ? "Yes" : "No",
-    //   school: school.checked ? "Yes" : "No",
-    //   market_area: market_area.checked ? "Yes" : "No"
-    // };
-
-    // if (
-    //   !values.property_name ||
-    //   !values.rent ||
-    //   !values.address ||
-    //   !values.offer ||
-    //   !values.type ||
-    //   !values.status ||
-    //   !values.furnished ||
-    //   !values.bhk ||
-    //   !values.bedroom ||
-    //   !values.bathroom ||
-    //   !values.balcony ||
-    //   !values.carpet ||
-    //   !values.age ||
-    //   !values.total_floors ||
-    //   !values.room_floor ||
-    //   !values.description
-    // ) {
-    //   setError("Please fill in all the fields*");
-    //   return;
-    // }
     
     const values = {
       cookie: window.token,
       page: "post",
+      offer: selectedOffer,
+  };
+
+  const fields = offerFields[selectedOffer]; // Use the selectedFields
+
+  for (const field of fields) {
+    if (field.name) {
+      // For rentFields, only add the field to the values if it has a 'name' property
+      values[field.name] = event.target.elements[field.name].value;
     }
+  }
+  
+  values['property_name'] = event.target.elements['property_name'].value;
+  values['description'] = event.target.elements['description'].value;
 
+  const requiredFields = fields.filter((field) => field.required);
 
-    const offerFields = selectedOffer === "sale" ? saleFields : rentFields;
-
-    offerFields.forEach((field) => {
-      values[field] = event.target.elements[field].value;
-    });
-
-    const requiredFields = [
-      ...offerFields
-    ];
-
-
-    if (requiredFields.some((field) => !values[field])) {
-      setError("Please fill in all the fields*");
-      return;
-    }
+  if (requiredFields.some((field) => !values[field.name])) {
+    setError("Please fill in all the fields*");
+    return;
+  }
 
     axios
       .post("http://localhost:80/api/property/", values)
@@ -330,6 +206,7 @@ const Post = () => {
                   <option value="rent">Rent</option>
                 </select>
             </div>
+
             {selectedOffer === "sale" && (
               <div>
                 <div className="flex">
@@ -508,159 +385,7 @@ const Post = () => {
             </div>
             )}
 
-            {selectedOffer === "rent" && (
-              <div>
-                <div className="flex">
-
-                  <div className="box">
-                    <p>Rent <span>*</span></p>
-                    <input type="number" name="rent" required min="0" max="9999999999" maxLength="10" placeholder="Enter Rent per month" className="input" />
-                  </div>
-
-                  <div className="box">
-                    <p>Security Deposite <span>*</span></p>
-                    <input type="number" name="security_deposite" required min="0" max="9999999999" maxLength="10" placeholder="Enter Security deposite amount" className="input" />
-                  </div>
-                  
-                  <div className="box">
-                    <p>Address <span>*</span></p>
-                    <input type="text" name="address" required maxLength="100" placeholder="Enter property full address" className="input" />
-                  </div>
-                  
-                  <div className="box">
-                    <p>Property type <span>*</span></p>
-                    <select name="type" required className="input">
-                      <option value="" selected>Select Property Type</option>
-                      <option value="flat">Flat</option>
-                      {/* <option value="house">house</option>
-                      <option value="shop">shop</option> */}
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Status <span>*</span></p>
-                    <select name="status" required className="input">
-                      <option value="" selected>Select Property Status</option>
-                      <option value="ready to move">Ready to move</option>
-                      <option value="under construction">Under construction</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Furnished status <span>*</span></p>
-                    <select name="furnished" required className="input">
-                      <option value="" selected>Select Furnished Status</option>
-                      <option value="furnished">Furnished</option>
-                      <option value="semi-furnished">Semi-furnished</option>
-                      <option value="unfurnished">Unfurnished</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many BHK <span>*</span></p>
-                    <select name="bhk" required className="input">
-                      <option value="" selected>Select BHK</option>
-                      <option value="1">1 BHK</option>
-                      <option value="2">2 BHK</option>
-                      <option value="3">3 BHK</option>
-                      <option value="4">4 BHK</option>
-                      <option value="5">5 BHK</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bedrooms <span>*</span></p>
-                    <select name="bedroom" required className="input">
-                      <option value="" selected>Select Number of Bedrooms</option>
-                      <option value="0">0 bedroom</option>
-                      <option value="1">1 bedroom</option>
-                      <option value="2">2 bedroom</option>
-                      <option value="3">3 bedroom</option>
-                      <option value="4">4 bedroom</option>
-                      <option value="5">5 bedroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bathrooms <span>*</span></p>
-                    <select name="bathroom" required className="input">
-                      <option value="" selected>Select Number of Bathrooms</option>
-                      <option value="1">1 bathroom</option>
-                      <option value="2">2 bathroom</option>
-                      <option value="3">3 bathroom</option>
-                      <option value="4">4 bathroom</option>
-                      <option value="5">5 bathroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many balconies <span>*</span></p>
-                    <select name="balcony" required className="input">
-                      <option value="" selected>Select Number of Balconies</option>
-                      <option value="0">0 balcony</option>
-                      <option value="1">1 balcony</option>
-                      <option value="2">2 balcony</option>
-                      <option value="3">3 balcony</option>
-                      <option value="4">4 balcony</option>
-                      <option value="5">5 balcony</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Carpet area <span>*</span></p>
-                    <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="How many square feet?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Property age <span>*</span></p>
-                    <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="How old is the property?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Total floors <span>*</span></p>
-                    <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="How many floors available?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Floor room <span>*</span></p>
-                    <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="Property floor number" className="input" />
-                  </div>
-                </div>
-
-              <div className="checkbox">
-                <div className="box">
-                  <label>
-                    <p>Lifts<input type="checkbox" name="lift" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Security guard<input type="checkbox" name="security_guard" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Play ground<input type="checkbox" name="play_ground" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Garden<input type="checkbox" name="garden" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Water supply<input type="checkbox" name="water_supply" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Power backup<input type="checkbox" name="power_backup" value="yes" /></p>
-                  </label>
-                </div>
-                <div className="box">
-                  <label>
-                    <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>School<input type="checkbox" name="school" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Market area<input type="checkbox" name="market_area" value="yes" /></p>
-                  </label>
-                </div>
-              </div>
-            </div>
-            )}
+            {selectedOffer === 'rent' && <DynamicFields fields={selectedFields} />}
             
 
             <div className="box">
@@ -678,3 +403,6 @@ const Post = () => {
 };
 
 export default Post;
+
+
+
