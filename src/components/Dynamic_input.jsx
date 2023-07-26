@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DynamicFields = ({ fields }) => {
+const DynamicFields = ({ fields, handleChange }) => {
   const renderInputField = (field) => {
     const { type, label, name, required, options, divClassName, ...otherProps } = field;
 
@@ -8,16 +8,26 @@ const DynamicFields = ({ fields }) => {
       case 'text':
       case 'number':
         return (
-          <div key={name} className={divClassName || 'box'}> {/* Use the divClassName prop or default to 'box' */}
-            <label>{label} <span>{required ? '*' : null}</span></label>
-            <input type={type} name={name} required={required} {...otherProps} className="input" />
+          <div key={name} className={divClassName || 'box'}>
+            <label>
+              {label} <span> {required ? '*' : null} </span>
+            </label>
+            <input
+              type={type}
+              name={name}
+              required={required}
+              {...otherProps}
+              className="input"
+            />
           </div>
         );
       case 'select':
         return (
-          <div key={name} className={divClassName || 'box'}> {/* Use the divClassName prop or default to 'box' */}
-            <label>{label} <span>{required ? '*' : null}</span></label>
-            <select name={name} required={required} className="input">
+          <div key={name} className={divClassName || 'box'}>
+            <label>
+              {label} <span>{required ? '*' : null}</span>
+            </label>
+            <select name={name} required={required}  className="input">
               {options.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -28,13 +38,15 @@ const DynamicFields = ({ fields }) => {
         );
       case 'checkbox':
         return (
+          <div key={name} className={divClassName || 'box'}>
             <label>
-            <input type="checkbox" name={name} {...otherProps} />
-            {label}
+              <input type="checkbox" name={name} onChange={handleChange} {...otherProps}/>
+              {label}
             </label>
+          </div>
         );
       default:
-        return null;
+        return null; 
     }
   };
 
