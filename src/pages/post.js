@@ -9,41 +9,298 @@ import "./Post.css";
 const Post = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [inputValues, setInputValues] = useState({})
+  const [inputValues, setInputValues] = useState({});
 
   const [selectedOffer, setSelectedOffer] =useState("");
 
   const saleFields = [
-    "property_name",
-    "price",
-    "deposite",
-    "address",
-    "offer",
-    "type",
-    "status",
-    "furnished",
-    "bhk",
-    "bedroom",
-    "bathroom",
-    "balcony",
-    "carpet",
-    "age",
-    "total_floors",
-    "room_floor",
-    "loan",
-    "description",
-    "lift",
-    "security_guard",
-    "play_ground",
-    "garden",
-    "water_supply",
-    "power_backup",
-    "parking_area",
-    "gym",
-    "shopping_mall",
-    "hospital",
-    "school",
-    "market_area",
+    {
+      type: 'number',
+      label: 'Property price',
+      name: 'price',
+      required: true,
+      min: 0,
+      max: 9999999999,
+      maxLength: 10,
+      placeholder: 'Enter property price',
+      divClassName: 'box', // Specify the class name for this field
+    },
+    {
+      type: 'number',
+      label: 'Deposite amount',
+      name: 'deposite',
+      required: true,
+      min: 0,
+      max: 9999999999,
+      maxLength: 10,
+      placeholder: 'Enter deposite amount',
+      divClassName: 'box',
+    },
+    {
+      type: 'text',
+      label: 'Property address',
+      name: 'address',
+      required: true,
+      maxLength: 100,
+      placeholder: 'Enter property full address',
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'Property type',
+      name: 'type',
+      required: true,
+      options: [
+        { value: '', label: 'Select Property Type' },
+        { value: 'flat', label: 'Flat' },
+        // Add more options if needed
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'Property status',
+      name: 'status',
+      required: true,
+      options: [
+        { value: '', label: 'Select Property Status' },
+        { value: 'ready to move', label: 'Ready to move' },
+        { value: 'under construction', label: 'Under construction' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'Furnished status',
+      name: 'furnished',
+      required: true,
+      options: [
+        { value: '', label: 'Select Furnished Status' },
+        { value: 'furnished', label: 'Furnished' },
+        { value: 'semi-furnished', label: 'Semi-furnished' },
+        { value: 'unfurnished', label: 'Unfurnished' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'How many BHK',
+      name: 'bhk',
+      required: true,
+      options: [
+        { value: '', label: 'Select BHK' },
+        { value: '1', label: '1 BHK' },
+        { value: '2', label: '2 BHK' },
+        { value: '3', label: '3 BHK' },
+        { value: '4', label: '4 BHK' },
+        { value: '5', label: '5 BHK' },
+        { value: '6', label: '6 BHK' },
+        { value: '7', label: '7 BHK' },
+        { value: '8', label: '8 BHK' },
+        { value: '9', label: '9 BHK' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'How many bedrooms',
+      name: 'bedroom',
+      required: true,
+      options: [
+        { value: '', label: 'Select Number of Bedrooms' },
+        { value: '0', label: '0 bedroom' },
+        { value: '1', label: '1 bedroom' },
+        { value: '2', label: '2 bedroom' },
+        { value: '3', label: '3 bedroom' },
+        { value: '4', label: '4 bedroom' },
+        { value: '5', label: '5 bedroom' },
+        { value: '6', label: '6 bedroom' },
+        { value: '7', label: '7 bedroom' },
+        { value: '8', label: '8 bedroom' },
+        { value: '9', label: '9 bedroom' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'How many bathrooms',
+      name: 'bathroom',
+      required: true,
+      options: [
+        { value: '', label: 'Select Number of Bathrooms' },
+        { value: '1', label: '1 bathroom' },
+        { value: '2', label: '2 bathroom' },
+        { value: '3', label: '3 bathroom' },
+        { value: '4', label: '4 bathroom' },
+        { value: '5', label: '5 bathroom' },
+        { value: '6', label: '6 bathroom' },
+        { value: '7', label: '7 bathroom' },
+        { value: '8', label: '8 bathroom' },
+        { value: '9', label: '9 bathroom' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'How many balconies',
+      name: 'balcony',
+      required: true,
+      options: [
+        { value: '', label: 'Select Number of Balconies' },
+        { value: '0', label: '0 balcony' },
+        { value: '1', label: '1 balcony' },
+        { value: '2', label: '2 balcony' },
+        { value: '3', label: '3 balcony' },
+        { value: '4', label: '4 balcony' },
+        { value: '5', label: '5 balcony' },
+        { value: '6', label: '6 balcony' },
+        { value: '7', label: '7 balcony' },
+        { value: '8', label: '8 balcony' },
+        { value: '9', label: '9 balcony' },
+      ],
+      divClassName: 'box',
+    },
+    {
+      type: 'number',
+      label: 'Carpet area',
+      name: 'carpet',
+      required: true,
+      min: 1,
+      max: 9999999999,
+      maxLength: 10,
+      placeholder: 'How many square feet?',
+      divClassName: 'box',
+    },
+    {
+      type: 'number',
+      label: 'Property age',
+      name: 'age',
+      required: true,
+      min: 0,
+      max: 99,
+      maxLength: 2,
+      placeholder: 'How old is the property?',
+      divClassName: 'box',
+    },
+    {
+      type: 'number',
+      label: 'Total floors',
+      name: 'total_floors',
+      required: true,
+      min: 0,
+      max: 99,
+      maxLength: 2,
+      placeholder: 'How many floors available?',
+      divClassName: 'box',
+    },
+    {
+      type: 'number',
+      label: 'Floor room',
+      name: 'room_floor',
+      required: true,
+      min: 0,
+      max: 99,
+      maxLength: 2,
+      placeholder: 'Property floor number',
+      divClassName: 'box',
+    },
+    {
+      type: 'select',
+      label: 'Loan',
+      name: 'loan',
+      required: true,
+      options: [
+        { value: '', label: 'Select Loan Availability' },
+        { value: 'available', label: 'Available' },
+        { value: 'not available', label: 'Not available' },
+      ],
+      divClassName: 'box', 
+    },
+    // Checkboxes
+    {
+      type: 'checkbox',
+      label: 'Lifts',
+      name: 'lift',
+      value: 'No',
+      divClassName: 'box',  // Specify the class name for this field
+    },
+    {
+      type: 'checkbox',
+      label: 'Security guard',
+      name: 'security_guard',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Play ground',
+      name: 'play_ground',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Garden',
+      name: 'garden',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Water supply',
+      name: 'water_supply',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Power backup',
+      name: 'power_backup',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Parking area',
+      name: 'parking_area',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Gym',
+      name: 'gym',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Shopping mall',
+      name: 'shopping_mall',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Hospital',
+      name: 'hospital',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'School',
+      name: 'school',
+      value: 'No',
+      divClassName: 'box', 
+    },
+    {
+      type: 'checkbox',
+      label: 'Market area',
+      name: 'market_area',
+      value: 'No',
+      divClassName: 'box', 
+    },
   ];
 
   const rentFields = [
@@ -121,7 +378,7 @@ const Post = () => {
   
   const offerFields = {
     rent: rentFields,
-    // Add more offer types as needed
+    sale: saleFields
   };
   
   const selectedFields = offerFields[selectedOffer];
@@ -130,11 +387,6 @@ const Post = () => {
     setSelectedOffer(e.target.value);
     setInputValues({});
   }
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -207,185 +459,51 @@ const Post = () => {
                 </select>
             </div>
 
-            {selectedOffer === "sale" && (
+            {selectedOffer === 'sale' && (
               <div>
+                {/* Structure for CSS in future */}
+                {/* 
                 <div className="flex">
-
-                  <div className="box">
-                    <p>Property price <span>*</span></p>
-                    <input type="number" name="price" required min="0" max="9999999999" maxLength="10" placeholder="Enter property price" className="input" />
-                  </div>
-
-                  <div className="box">
-                    <p>Deposite amount <span>*</span></p>
-                    <input type="number" name="deposite" required min="0" max="9999999999" maxLength="10" placeholder="Enter deposite amount" className="input" />
-                  </div>
-                  
-                  <div className="box">
-                    <p>Property address <span>*</span></p>
-                    <input type="text" name="address" required maxLength="100" placeholder="Enter property full address" className="input" />
-                  </div>
-                  
-                  <div className="box">
-                    <p>Property type <span>*</span></p>
-                    <select name="type" required className="input">
-                      <option value="" selected>Select Property Type</option>
-                      <option value="flat">Flat</option>
-                      {/* <option value="house">house</option>
-                      <option value="shop">shop</option> */}
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Property status <span>*</span></p>
-                    <select name="status" required className="input">
-                      <option value="" selected>Select Property Status</option>
-                      <option value="ready to move">Ready to move</option>
-                      <option value="under construction">Under construction</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Furnished status <span>*</span></p>
-                    <select name="furnished" required className="input">
-                      <option value="" selected>Select Furnished Status</option>
-                      <option value="furnished">Furnished</option>
-                      <option value="semi-furnished">Semi-furnished</option>
-                      <option value="unfurnished">Unfurnished</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many BHK <span>*</span></p>
-                    <select name="bhk" required className="input">
-                      <option value="" selected>Select BHK</option>
-                      <option value="1">1 BHK</option>
-                      <option value="2">2 BHK</option>
-                      <option value="3">3 BHK</option>
-                      <option value="4">4 BHK</option>
-                      <option value="5">5 BHK</option>
-                      <option value="6">6 BHK</option>
-                      <option value="7">7 BHK</option>
-                      <option value="8">8 BHK</option>
-                      <option value="9">9 BHK</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bedrooms <span>*</span></p>
-                    <select name="bedroom" required className="input">
-                      <option value="" selected>Select Number of Bedrooms</option>
-                      <option value="0">0 bedroom</option>
-                      <option value="1">1 bedroom</option>
-                      <option value="2">2 bedroom</option>
-                      <option value="3">3 bedroom</option>
-                      <option value="4">4 bedroom</option>
-                      <option value="5">5 bedroom</option>
-                      <option value="6">6 bedroom</option>
-                      <option value="7">7 bedroom</option>
-                      <option value="8">8 bedroom</option>
-                      <option value="9">9 bedroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bathrooms <span>*</span></p>
-                    <select name="bathroom" required className="input">
-                      <option value="" selected>Select Number of Bathrooms</option>
-                      <option value="1">1 bathroom</option>
-                      <option value="2">2 bathroom</option>
-                      <option value="3">3 bathroom</option>
-                      <option value="4">4 bathroom</option>
-                      <option value="5">5 bathroom</option>
-                      <option value="6">6 bathroom</option>
-                      <option value="7">7 bathroom</option>
-                      <option value="8">8 bathroom</option>
-                      <option value="9">9 bathroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many balconies <span>*</span></p>
-                    <select name="balcony" required className="input">
-                      <option value="" selected>Select Number of Balconies</option>
-                      <option value="0">0 balcony</option>
-                      <option value="1">1 balcony</option>
-                      <option value="2">2 balcony</option>
-                      <option value="3">3 balcony</option>
-                      <option value="4">4 balcony</option>
-                      <option value="5">5 balcony</option>
-                      <option value="6">6 balcony</option>
-                      <option value="7">7 balcony</option>
-                      <option value="8">8 balcony</option>
-                      <option value="9">9 balcony</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Carpet area <span>*</span></p>
-                    <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="How many square feet?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Property age <span>*</span></p>
-                    <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="How old is the property?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Total floors <span>*</span></p>
-                    <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="How many floors available?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Floor room <span>*</span></p>
-                    <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="Property floor number" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Loan <span>*</span></p>
-                    <select name="loan" required className="input">
-                      <option value="" selected>Select Loan Availability</option>
-                      <option value="available">Available</option>
-                      <option value="not available">Not available</option>
-                    </select>
-                  </div>
+                  <div className="box"></div>
+                  <div className="box"></div>
+                  <div className="box"></div>
+                  ...
                 </div>
 
-              <div className="checkbox">
-                <div className="box">
-                  <label>
-                    <p>Lifts<input type="checkbox" name="lift" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Security guard<input type="checkbox" name="security_guard" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Play ground<input type="checkbox" name="play_ground" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Garden<input type="checkbox" name="garden" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Water supply<input type="checkbox" name="water_supply" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Power backup<input type="checkbox" name="power_backup" value="yes" /></p>
-                  </label>
-                </div>
-                <div className="box">
-                  <label>
-                    <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>School<input type="checkbox" name="school" value="yes" /></p>
-                  </label>
-                  <label>
-                    <p>Market area<input type="checkbox" name="market_area" value="yes" /></p>
-                  </label>
-                </div>
+                <div className="checkbox">
+
+                  <div className="box">
+                    //should have 
+                    <label>
+                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
+                    </label>
+                    <label>
+                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
+                    </label>
+                    ...
+                  </div>
+                  <div className="box">
+                    //should have
+                    <label>
+                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
+                    </label>
+                    <label>
+                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
+                    </label>
+                    ...
+                  </div>
+
+                </div> 
+                */}
+                <DynamicFields fields={saleFields} />
               </div>
-            </div>
             )}
 
-            {selectedOffer === 'rent' && <DynamicFields fields={selectedFields} />}
+            {selectedOffer === 'rent' && (
+              <div>
+                  <DynamicFields fields={selectedFields} />
+              </div>
+            )}
             
 
             <div className="box">
