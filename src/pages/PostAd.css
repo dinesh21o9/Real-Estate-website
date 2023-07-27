@@ -1,0 +1,77 @@
+/* PostAd.css */
+.post_ad-container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 20px;
+  }
+  
+  .post_ad-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .post_ad-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .post_ad-form-group label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .post_ad-form-group input[type="text"] ,
+  .post_ad-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .post_ad-form-group input[type="number"] ,
+  .post_ad-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  
+  .post_ad-form-group textarea {
+    resize: vertical;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .post_ad-posted-ads-container {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .post_ad-posted-ads-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  .post_ad-posted-ads-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .post_ad-posted-ads-container li {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  

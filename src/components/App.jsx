@@ -7,6 +7,7 @@ import Signup from "../pages/signup";
 import Login from "../pages/login";
 import Admin_Login from "../pages/Admin_login";
 import ViewProp from "../pages/view_prop";
+import PostAd from "../pages/post_ad";
 
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -17,7 +18,9 @@ function App() {
 
           <Route exact path="/" element={<Home />} />
             
-          <Route path="post" element={<Post />} />
+          <Route path="post" element={<Post />} />  
+          
+          <Route path="post_ad" element={<PostAd />} />
             
           <Route path="dashboard" element={<Dashboard />} />
 

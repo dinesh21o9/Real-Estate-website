@@ -195,7 +195,7 @@ const Post = () => {
     values['property_name'] = event.target.elements['property_name'].value;
     values['description'] = event.target.elements['description'].value;
 
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]'); //jquery
 
     // Iterate over each checkbox and set its value to "Yes" or "No" based on whether it is checked or not
     checkboxes.forEach((checkbox) => {
@@ -244,6 +244,14 @@ const Post = () => {
             <div className="box">
               <p>Property name <span>*</span></p>
               <input type="text" name="property_name" required maxLength="50" placeholder="Enter property name" className="input" />
+
+              {/* <p>Property type <span>*</span></p>
+                <select name="property_type" value={selectedOffer} onChange={handleOfferChange} required className="input" >
+                  <option value="" selected>Select Offer Type</option>
+                  <option value="sale">Sale</option>
+                  <option value="rent">Rent</option>
+                </select> */}
+              
               <p>Offer type <span>*</span></p>
                 <select name="offer" value={selectedOffer} onChange={handleOfferChange} required className="input" >
                   <option value="" selected>Select Offer Type</option>
@@ -252,54 +260,11 @@ const Post = () => {
                 </select>
             </div>
 
-            {selectedOffer === 'sale' && (
-              <div>
-                {/* Structure for CSS in future */}
-                {/* 
-                <div className="flex">
-                  <div className="box"></div>
-                  <div className="box"></div>
-                  <div className="box"></div>
-                  ...
-                </div>
-
-                <div className="checkbox">
-
-                  <div className="box">
-                    //should have 
-                    <label>
-                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                    </label>
-                    ...
-                  </div>
-                  <div className="box">
-                    //should have
-                    <label>
-                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                    </label>
-                    ...
-                  </div>
-
-                </div> 
-                */}
-                <DynamicFields fields={saleFields}  />
-              </div>
-            )}
-
-            {selectedOffer === 'rent' && (
+            {selectedOffer  && (
               <div>
                   <DynamicFields fields={selectedFields} />
               </div>
             )}
-
-            
-                        
 
             <div className="box">
               <p>Description <span>*</span></p>

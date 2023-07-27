@@ -589,3 +589,49 @@
             //   setError("Please fill in all the fields*");
             //   return;
             // }
+
+
+
+            structure for css;
+
+
+            {/* {selectedOffer  && (
+              <div>
+                
+                Structure for CSS in future
+                
+                <div className="flex">
+                  <div className="box"></div>
+                  <div className="box"></div>
+                  <div className="box"></div>
+                  ...
+                </div>
+
+                <div className="checkbox">
+
+                  <div className="box">
+                    //should have 
+                    <label>
+                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
+                    </label>
+                    <label>
+                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
+                    </label>
+                    ...
+                  </div>
+                  <div className="box">
+                    //should have
+                    <label>
+                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
+                    </label>
+                    <label>
+                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
+                    </label>
+                    ...
+                  </div>
+
+                </div> 
+               
+                <DynamicFields fields={selectedFields}  />
+              </div>
+            )} */}
