@@ -129,7 +129,7 @@ const PostAd = () => {
             />
           </div>
 
-          <button type="submit">Submit Ad</button>
+          <button type="submit" className="post_ad-button">Submit Ad</button>
         </form>
       </div>
 

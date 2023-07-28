@@ -12,7 +12,8 @@ const Dashboard = () => {
   }, []);
 
   function getProp() {
-    axios.get('http://localhost:80/api/property/')
+    axios
+      .get('http://localhost:80/api/property/')
       .then(function (response) {
         console.log(response.data);
         setProp(response.data);
