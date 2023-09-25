@@ -1,637 +1,367 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./combined-auth.css"; // Import your CSS file here
+import { Link } from "react-router-dom";
 
+const CombinedAuth = () => {
+  const [done, setDone] = useState(false);
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirmation: "",
+    page: "userLogin", // Initialize the page state to "userLogin"
+  });
 
+  const [error, setError] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
 
-
-            {selectedOffer === "rent" && (
-                <div>
+  const handleToggleMode = () => {
+    setIsSignUp(!isSignUp);
+  };
   
-                  <div className="flex">
-  
-                    <div className="box">
-                      <p>Rent <span>*</span></p>
-                      <input type="number" name="rent" required min="0" max="9999999999" maxLength="10" placeholder="Enter Rent per month" className="input" />
-                    </div>
-  
-                    <div className="box">
-                      <p>Security Deposite <span>*</span></p>
-                      <input type="number" name="security_deposite" required min="0" max="9999999999" maxLength="10" placeholder="Enter Security deposite amount" className="input" />
-                    </div>
-                    
-                    <div className="box">
-                      <p>Address <span>*</span></p>
-                      <input type="text" name="address" required maxLength="100" placeholder="Enter property full address" className="input" />
-                    </div>
-                    
-                    <div className="box">
-                      <p>Property type <span>*</span></p>
-                      <select name="type" required className="input">
-                        <option value="" selected>Select Property Type</option>
-                        <option value="flat">Flat</option>
-                        {/* <option value="house">house</option>
-                        <option value="shop">shop</option> */}
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>Status <span>*</span></p>
-                      <select name="status" required className="input">
-                        <option value="" selected>Select Property Status</option>
-                        <option value="ready to move">Ready to move</option>
-                        <option value="under construction">Under construction</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>Furnished status <span>*</span></p>
-                      <select name="furnished" required className="input">
-                        <option value="" selected>Select Furnished Status</option>
-                        <option value="furnished">Furnished</option>
-                        <option value="semi-furnished">Semi-furnished</option>
-                        <option value="unfurnished">Unfurnished</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>How many BHK <span>*</span></p>
-                      <select name="bhk" required className="input">
-                        <option value="" selected>Select BHK</option>
-                        <option value="1">1 BHK</option>
-                        <option value="2">2 BHK</option>
-                        <option value="3">3 BHK</option>
-                        <option value="4">4 BHK</option>
-                        <option value="5">5 BHK</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>How many bedrooms <span>*</span></p>
-                      <select name="bedroom" required className="input">
-                        <option value="" selected>Select Number of Bedrooms</option>
-                        <option value="0">0 bedroom</option>
-                        <option value="1">1 bedroom</option>
-                        <option value="2">2 bedroom</option>
-                        <option value="3">3 bedroom</option>
-                        <option value="4">4 bedroom</option>
-                        <option value="5">5 bedroom</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>How many bathrooms <span>*</span></p>
-                      <select name="bathroom" required className="input">
-                        <option value="" selected>Select Number of Bathrooms</option>
-                        <option value="1">1 bathroom</option>
-                        <option value="2">2 bathroom</option>
-                        <option value="3">3 bathroom</option>
-                        <option value="4">4 bathroom</option>
-                        <option value="5">5 bathroom</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>How many balconies <span>*</span></p>
-                      <select name="balcony" required className="input">
-                        <option value="" selected>Select Number of Balconies</option>
-                        <option value="0">0 balcony</option>
-                        <option value="1">1 balcony</option>
-                        <option value="2">2 balcony</option>
-                        <option value="3">3 balcony</option>
-                        <option value="4">4 balcony</option>
-                        <option value="5">5 balcony</option>
-                      </select>
-                    </div>
-  
-                    <div className="box">
-                      <p>Carpet area <span>*</span></p>
-                      <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="How many square feet?" className="input" />
-                    </div>
-  
-                    <div className="box">
-                      <p>Property age <span>*</span></p>
-                      <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="How old is the property?" className="input" />
-                    </div>
-  
-                    <div className="box">
-                      <p>Total floors <span>*</span></p>
-                      <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="How many floors available?" className="input" />
-                    </div>
-  
-                    <div className="box">
-                      <p>Floor room <span>*</span></p>
-                      <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="Property floor number" className="input" />
-                    </div>
-  
-                  </div>
-  
-                  <div className="checkbox">
-                    <div className="box">
-                      <label>
-                        <p>Lifts<input type="checkbox" name="lift" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Security guard<input type="checkbox" name="security_guard" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Play ground<input type="checkbox" name="play_ground" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Garden<input type="checkbox" name="garden" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Water supply<input type="checkbox" name="water_supply" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Power backup<input type="checkbox" name="power_backup" value="yes" /></p>
-                      </label>
-                    </div>
-                    <div className="box">
-                      <label>
-                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>School<input type="checkbox" name="school" value="yes" /></p>
-                      </label>
-                      <label>
-                        <p>Market area<input type="checkbox" name="market_area" value="yes" /></p>
-                      </label>
-                    </div>
-                  </div>
-  
-                </div>
-              )}
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    //SIGNUP PART
+    if (isSignUp) {
+      setFormData({ ...formData, page: "signup" }); // Set the page variable in formData to "signup"
 
+      const { name, email, password, passwordConfirmation } = formData;
 
+      if (!name || !email || !password || !passwordConfirmation) {
+        setError("Please fill in all the fields");
+        return;
+      }
 
+      if (password !== passwordConfirmation) {
+        setError("Passwords do not match");
+        return;
+      }
 
-{selectedOffer === "rent" && (
-              <div>
+      axios
+        .post("http://localhost:80/api/signup/", formData)
+        .then(function (response) {
+          if (response.data.status) {
+            setDone(true);
+          } else {
+            setError("Provided Email has an account!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setError("An error occurred. Please try again.");
+        });
+    } 
+    //LOGIN PART
+    else {
+      setFormData({ ...formData, page: "userLogin" }); // Set the page variable in formData to "login"
 
-                {/* <div className="flex">
+      if (!formData.email || !formData.password) {
+        setError("Please enter both email and password");
+        return;
+      }
 
-                </div>
+      axios
+        .post("http://localhost:80/api/login/", formData)
+        .then(function (response) {
 
-                <div className="checkbox">
+          if (response.data.status) {
+            
+            //jwt is in response.data.token
+            window.token = response.data.token;
+            console.log(window.token);
+            setDone(true);
+          } else {
+            setError("Invalid Credentials");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          setError("An error occurred. Please try again.");
+        });
+    }
+  };
 
-                </div> */}
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   setFormData({ ...formData, page: "userLogin" }); // Set the page variable in formData to "login"
 
-              </div>
-            )}
+  //   if (!formData.email || !formData.password) {
+  //     setError("Please enter both email and password");
+  //     return;
+  //   }
 
-            // const rentFields = [
-            //   "property_name",
-            //   "rent",
-            //   "security_deposite",
-            //   "address",
-            //   "offer",
-            //   "type",
-            //   "status",
-            //   "furnished",
-            //   "bhk",
-            //   "bedroom",
-            //   "bathroom",
-            //   "balcony",
-            //   "carpet",
-            //   "age",
-            //   "total_floors",
-            //   "room_floor",
-            //   "description",
-            //   "lift",
-            //   "security_guard",
-            //   "play_ground",
-            //   "garden",
-            //   "water_supply",
-            //   "power_backup",
-            //   "parking_area",
-            //   "gym",
-            //   "shopping_mall",
-            //   "hospital",
-            //   "school",
-            //   "market_area",
-            // ];
+  //   axios
+  //     .post("http://localhost:80/api/login/", formData)
+  //     .then(function (response) {
+
+  //       if (response.data.status) {
           
+  //         //jwt is in response.data.token
+  //         window.token = response.data.token;
+  //         console.log(window.token);
+  //         setDone(true);
+  //       } else {
+  //         setError("Invalid Credentials");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //       setError("An error occurred. Please try again.");
+  //     });
+  // };
 
+  // const handleSignUp = (e) => {
+  //   e.preventDefault();
+  //   setFormData({ ...formData, page: "signup" }); // Set the page variable in formData to "signup"
 
+  //   const { name, email, password, passwordConfirmation } = formData;
 
+  //   if (!name || !email || !password || !passwordConfirmation) {
+  //     setError("Please fill in all the fields");
+  //     return;
+  //   }
 
+  //   if (password !== passwordConfirmation) {
+  //     setError("Passwords do not match");
+  //     return;
+  //   }
 
+  //   axios
+  //     .post("http://localhost:80/api/signup/", formData)
+  //     .then(function (response) {
+  //       if (response.data.status) {
+  //         setDone(true);
+  //       } else {
+  //         setError("Provided Email has an account!");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //       setError("An error occurred. Please try again.");
+  //     });
+  // };
 
-
-
-
-            {selectedOffer === "sale" && (
-              <div>
-                <div className="flex">
-                  <div className="box">
-                    <p>Property price <span>*</span></p>
-                    <input type="number" name="price" required min="0" max="9999999999" maxLength="10" placeholder="Enter property price" className="input" />
+  return (
+    <div className={`combined-Auth-container ${isSignUp ? "combined-Auth-sign-up-mode" : ""}`}>
+      {done ? (
+        <div>
+          <p className="combined-Auth-success-message">Authentication successful.</p>
+          <span className="combined-Auth-login-message">You can now</span>
+          <Link to="/post" className="combined-Auth-login-link">
+            Post
+          </Link>
+        </div>
+      ) : (
+        <div>
+          <div className="combined-Auth-forms-container">
+            <div className="combined-Auth-signin-signup">
+              <form
+                className={isSignUp ? "combined-Auth-sign-up-form" : "combined-Auth-sign-in-form"}
+                onSubmit={handleSubmit}
+              >
+                <h2 className="combined-Auth-title">{isSignUp ? "Sign up" : "Sign in"}</h2>
+                {isSignUp && (
+                  <div className="combined-Auth-input-field">
+                    <i className="fas fa-user"></i>
+                    <input
+                      type="text"
+                      placeholder="Username"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
                   </div>
-                  <div className="box">
-                    <p>Deposite amount <span>*</span></p>
-                    <input type="number" name="deposite" required min="0" max="9999999999" maxLength="10" placeholder="Enter deposite amount" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Property address <span>*</span></p>
-                    <input type="text" name="address" required maxLength="100" placeholder="Enter property full address" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Property type <span>*</span></p>
-                    <select name="type" required className="input">
-                      <option value="" selected>Select Property Type</option>
-                      <option value="flat">Flat</option>
-                      {/* <option value="house">house</option>
-                      <option value="shop">shop</option> */}
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Property status <span>*</span></p>
-                    <select name="status" required className="input">
-                      <option value="" selected>Select Property Status</option>
-                      <option value="ready to move">Ready to move</option>
-                      <option value="under construction">Under construction</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Furnished status <span>*</span></p>
-                    <select name="furnished" required className="input">
-                      <option value="" selected>Select Furnished Status</option>
-                      <option value="furnished">Furnished</option>
-                      <option value="semi-furnished">Semi-furnished</option>
-                      <option value="unfurnished">Unfurnished</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many BHK <span>*</span></p>
-                    <select name="bhk" required className="input">
-                      <option value="" selected>Select BHK</option>
-                      <option value="1">1 BHK</option>
-                      <option value="2">2 BHK</option>
-                      <option value="3">3 BHK</option>
-                      <option value="4">4 BHK</option>
-                      <option value="5">5 BHK</option>
-                      <option value="6">6 BHK</option>
-                      <option value="7">7 BHK</option>
-                      <option value="8">8 BHK</option>
-                      <option value="9">9 BHK</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bedrooms <span>*</span></p>
-                    <select name="bedroom" required className="input">
-                      <option value="" selected>Select Number of Bedrooms</option>
-                      <option value="0">0 bedroom</option>
-                      <option value="1">1 bedroom</option>
-                      <option value="2">2 bedroom</option>
-                      <option value="3">3 bedroom</option>
-                      <option value="4">4 bedroom</option>
-                      <option value="5">5 bedroom</option>
-                      <option value="6">6 bedroom</option>
-                      <option value="7">7 bedroom</option>
-                      <option value="8">8 bedroom</option>
-                      <option value="9">9 bedroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many bathrooms <span>*</span></p>
-                    <select name="bathroom" required className="input">
-                      <option value="" selected>Select Number of Bathrooms</option>
-                      <option value="1">1 bathroom</option>
-                      <option value="2">2 bathroom</option>
-                      <option value="3">3 bathroom</option>
-                      <option value="4">4 bathroom</option>
-                      <option value="5">5 bathroom</option>
-                      <option value="6">6 bathroom</option>
-                      <option value="7">7 bathroom</option>
-                      <option value="8">8 bathroom</option>
-                      <option value="9">9 bathroom</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>How many balconies <span>*</span></p>
-                    <select name="balcony" required className="input">
-                      <option value="" selected>Select Number of Balconies</option>
-                      <option value="0">0 balcony</option>
-                      <option value="1">1 balcony</option>
-                      <option value="2">2 balcony</option>
-                      <option value="3">3 balcony</option>
-                      <option value="4">4 balcony</option>
-                      <option value="5">5 balcony</option>
-                      <option value="6">6 balcony</option>
-                      <option value="7">7 balcony</option>
-                      <option value="8">8 balcony</option>
-                      <option value="9">9 balcony</option>
-                    </select>
-                  </div>
-                  <div className="box">
-                    <p>Carpet area <span>*</span></p>
-                    <input type="number" name="carpet" required min="1" max="9999999999" maxLength="10" placeholder="How many square feet?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Property age <span>*</span></p>
-                    <input type="number" name="age" required min="0" max="99" maxLength="2" placeholder="How old is the property?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Total floors <span>*</span></p>
-                    <input type="number" name="total_floors" required min="0" max="99" maxLength="2" placeholder="How many floors available?" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Floor room <span>*</span></p>
-                    <input type="number" name="room_floor" required min="0" max="99" maxLength="2" placeholder="Property floor number" className="input" />
-                  </div>
-                  <div className="box">
-                    <p>Loan <span>*</span></p>
-                    <select name="loan" required className="input">
-                      <option value="" selected>Select Loan Availability</option>
-                      <option value="available">Available</option>
-                      <option value="not available">Not available</option>
-                    </select>
-                  </div>
+                )}
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </div>
-
-                <div className="checkbox">
-                    <div className="box">
-                    <label>
-                        <p>Lifts<input type="checkbox" name="lift" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Security guard<input type="checkbox" name="security_guard" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Play ground<input type="checkbox" name="play_ground" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Garden<input type="checkbox" name="garden" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Water supply<input type="checkbox" name="water_supply" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Power backup<input type="checkbox" name="power_backup" value="yes" /></p>
-                    </label>
-                    </div>
-                    <div className="box">
-                    <label>
-                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>School<input type="checkbox" name="school" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Market area<input type="checkbox" name="market_area" value="yes" /></p>
-                    </label>
-                    </div>
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
                 </div>
+                {isSignUp && (
+                  <div className="combined-Auth-input-field">
+                    <i className="fas fa-lock"></i>
+                    <input
+                      type="password"
+                      placeholder="Confirm Password"
+                      name="passwordConfirmation"
+                      value={formData.passwordConfirmation}
+                      onChange={handleChange}
+                    />
+                  </div>
+                )}
+                <input
+                  type="hidden" // Add a hidden input field for the page variable
+                  name="page"
+                  value={formData.page}
+                />
+                <input
+                  type="submit"
+                  className="combined-Auth-btn"
+                  value={isSignUp ? "Sign up" : "Login"}
+                />
+              </form>
+            </div>
+          </div>
+
+          <div className="combined-Auth-panels-container">
+            <div className={`combined-Auth-panel left-panel ${isSignUp ? "sign-up-mode" : ""}`}>
+              {/* Left panel content */}
+              <div className="combined-Auth-content">
+                <h3>New here ?</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Debitis, ex ratione. Aliquid!
+                </p>
+                <button
+                  className="combined-Auth-btn combined-Auth-transparent"
+                  onClick={handleToggleMode}
+                >
+                  Sign up
+                </button>
               </div>
-            )}
+            </div>
+            <div className={`combined-Auth-panel right-panel ${isSignUp ? "sign-up-mode" : ""}`}>
+              {/* Right panel content */}
+              <div className="combined-Auth-content">
+                <h3>One of us ?</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nostrum laboriosam ad deleniti.
+                </p>
+                <button
+                  className="combined-Auth-btn combined-Auth-transparent"
+                  onClick={handleToggleMode}
+                >
+                  Sign in
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default CombinedAuth;
 
 
 
 
-            // Sale block
-
-            // const {
-            //   property_name,
-            //   price,
-            //   deposite,
-            //   address,
-            //   offer,
-            //   type,
-            //   status,
-            //   furnished,
-            //   bhk,
-            //   bedroom,
-            //   bathroom,
-            //   balcony,
-            //   carpet,
-            //   age,
-            //   total_floors,
-            //   room_floor,
-            //   loan,
-            //   description,
-            //   lift,
-            //   security_guard,
-            //   play_ground,
-            //   garden,
-            //   water_supply,
-            //   power_backup,
-            //   parking_area,
-            //   gym,
-            //   shopping_mall,
-            //   hospital,
-            //   school,
-            //   market_area
-            // } = event.target.elements;
-        
-            // const values = {
-            //   cookie: window.token,
-            //   page:'post',
-            //   property_name: property_name.value,
-            //   price: price.value,
-            //   deposite: deposite.value,
-            //   address: address.value,
-            //   offer: offer.value,
-            //   type: type.value,
-            //   status: status.value,
-            //   furnished: furnished.value,
-            //   bhk: bhk.value,
-            //   bedroom: bedroom.value,
-            //   bathroom: bathroom.value,
-            //   balcony: balcony.value,
-            //   carpet: carpet.value,
-            //   age: age.value,
-            //   total_floors: total_floors.value,
-            //   room_floor: room_floor.value,
-            //   loan: loan.value,
-            //   description: description.value,
-            //   lift: lift.checked ? "Yes" : "No",
-            //   security_guard: security_guard.checked ? "Yes" : "No",
-            //   play_ground: play_ground.checked ? "Yes" : "No",
-            //   garden: garden.checked ? "Yes" : "No",
-            //   water_supply: water_supply.checked ? "Yes" : "No",
-            //   power_backup: power_backup.checked ? "Yes" : "No",
-            //   parking_area: parking_area.checked ? "Yes" : "No",
-            //   gym: gym.checked ? "Yes" : "No",
-            //   shopping_mall: shopping_mall.checked ? "Yes" : "No",
-            //   hospital: hospital.checked ? "Yes" : "No",
-            //   school: school.checked ? "Yes" : "No",
-            //   market_area: market_area.checked ? "Yes" : "No"
-            // };
-        
-            // if (
-            //   !values.property_name ||
-            //   !values.price ||
-            //   !values.address ||
-            //   !values.offer ||
-            //   !values.type ||
-            //   !values.status ||
-            //   !values.furnished ||
-            //   !values.bhk ||
-            //   !values.bedroom ||
-            //   !values.bathroom ||
-            //   !values.balcony ||
-            //   !values.carpet ||
-            //   !values.age ||
-            //   !values.total_floors ||
-            //   !values.room_floor ||
-            //   !values.loan ||
-            //   !values.description
-            // ) {
-            //   setError("Please fill in all the fields*");
-            //   return;
-            // }
-        
-            // Rent block
-        
-            // const {
-            //   property_name,
-            //   rent,
-            //   security_deposite,
-            //   address,
-            //   offer,
-            //   type,
-            //   status,
-            //   furnished,
-            //   bhk,
-            //   bedroom,
-            //   bathroom,
-            //   balcony,
-            //   carpet,
-            //   age,
-            //   total_floors,
-            //   room_floor,
-            //   description,
-            //   lift,
-            //   security_guard,
-            //   play_ground,
-            //   garden,
-            //   water_supply,
-            //   power_backup,
-            //   parking_area,
-            //   gym,
-            //   shopping_mall,
-            //   hospital,
-            //   school,
-            //   market_area
-            // } = event.target.elements;
-        
-            // const values = {
-            //   cookie: window.token,
-            //   page:'post',
-            //   property_name: property_name.value,
-            //   rent: rent.value,
-            //   security_deposite: security_deposite.value,
-            //   address: address.value,
-            //   offer: offer.value,
-            //   type: type.value,
-            //   status: status.value,
-            //   furnished: furnished.value,
-            //   bhk: bhk.value,
-            //   bedroom: bedroom.value,
-            //   bathroom: bathroom.value,
-            //   balcony: balcony.value,
-            //   carpet: carpet.value,
-            //   age: age.value,
-            //   total_floors: total_floors.value,
-            //   room_floor: room_floor.value,
-            //   description: description.value,
-            //   lift: lift.checked ? "Yes" : "No",
-            //   security_guard: security_guard.checked ? "Yes" : "No",
-            //   play_ground: play_ground.checked ? "Yes" : "No",
-            //   garden: garden.checked ? "Yes" : "No",
-            //   water_supply: water_supply.checked ? "Yes" : "No",
-            //   power_backup: power_backup.checked ? "Yes" : "No",
-            //   parking_area: parking_area.checked ? "Yes" : "No",
-            //   gym: gym.checked ? "Yes" : "No",
-            //   shopping_mall: shopping_mall.checked ? "Yes" : "No",
-            //   hospital: hospital.checked ? "Yes" : "No",
-            //   school: school.checked ? "Yes" : "No",
-            //   market_area: market_area.checked ? "Yes" : "No"
-            // };
-        
-            // if (
-            //   !values.property_name ||
-            //   !values.rent ||
-            //   !values.address ||
-            //   !values.offer ||
-            //   !values.type ||
-            //   !values.status ||
-            //   !values.furnished ||
-            //   !values.bhk ||
-            //   !values.bedroom ||
-            //   !values.bathroom ||
-            //   !values.balcony ||
-            //   !values.carpet ||
-            //   !values.age ||
-            //   !values.total_floors ||
-            //   !values.room_floor ||
-            //   !values.description
-            // ) {
-            //   setError("Please fill in all the fields*");
-            //   return;
-            // }
 
 
+              <form className="combined-Auth-sign-ip-form" onSubmit={handleSubmit}>
 
-            structure for css;
+                <h2 className="combined-Auth-title">Sign in</h2>
 
-
-            {/* {selectedOffer  && (
-              <div>
-                
-                Structure for CSS in future
-                
-                <div className="flex">
-                  <div className="box"></div>
-                  <div className="box"></div>
-                  <div className="box"></div>
-                  ...
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
                 </div>
 
-                <div className="checkbox">
+                <!-- <input
+                  type="hidden" // Add a hidden input field for the page variable
+                  name="page"
+                  value={formData.page}
+                /> -->
+                <input
+                  type="submit"
+                  className="combined-Auth-btn"
+                  value="Login"
+                />
+              </form>
 
-                  <div className="box">
-                    //should have 
-                    <label>
-                        <p>Parking area<input type="checkbox" name="parking_area" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Gym<input type="checkbox" name="gym" value="yes" /></p>
-                    </label>
-                    ...
-                  </div>
-                  <div className="box">
-                    //should have
-                    <label>
-                        <p>Shopping mall<input type="checkbox" name="shopping_mall" value="yes" /></p>
-                    </label>
-                    <label>
-                        <p>Hospital<input type="checkbox" name="hospital" value="yes" /></p>
-                    </label>
-                    ...
-                  </div>
+              <form className="combined-Auth-sign-up-form" onSubmit={handleSubmit}>
 
-                </div> 
-               
-                <DynamicFields fields={selectedFields}  />
-              </div>
-            )} */}
+                <h2 className="combined-Auth-title">Sign up</h2>
+              
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-user"></i>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="combined-Auth-input-field">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="passwordConfirmation"
+                    value={formData.passwordConfirmation}
+                    onChange={handleChange}
+                  />
+                </div>
+
+                <!-- <input
+                  type="hidden" // Add a hidden input field for the page variable
+                  name="page"
+                  value={formData.page}
+                /> -->
+                <input
+                  type="submit"
+                  className="combined-Auth-btn"
+                  value="Sign up"
+                />
+              </form>

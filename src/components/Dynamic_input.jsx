@@ -9,9 +9,9 @@ const DynamicFields = ({ fields, handleChange }) => {
       case 'number':
         return (
           <div key={name} className={divClassName || 'box'}>
-            <label>
-              {label} <span> {required ? '*' : null} </span>
-            </label>
+            <p>
+              {label + " "} <span> {required ? ' *' : null} </span>
+            </p>
             <input
               type={type}
               name={name}
@@ -24,9 +24,9 @@ const DynamicFields = ({ fields, handleChange }) => {
       case 'select':
         return (
           <div key={name} className={divClassName || 'box'}>
-            <label>
-              {label} <span>{required ? '*' : null}</span>
-            </label>
+            <p>
+              {label + " "} <span>{required ? ' *' : null}</span>
+            </p>
             <select name={name} required={required}  className="input">
               {options.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -40,8 +40,8 @@ const DynamicFields = ({ fields, handleChange }) => {
         return (
           <div key={name} className={divClassName || 'box'}>
             <label>
-              <input type="checkbox" name={name} onChange={handleChange} {...otherProps}/>
               {label}
+              <input type="checkbox" name={name} onChange={handleChange} {...otherProps}/>
             </label>
           </div>
         );

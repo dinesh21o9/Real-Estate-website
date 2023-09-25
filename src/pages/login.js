@@ -24,7 +24,7 @@ const Login = () => {
       setError("Please enter both email and password");
       return;
     }
-
+    // console.log(data);
     axios
       .post("http://localhost:80/api/login/", data)
       .then(function (response) {

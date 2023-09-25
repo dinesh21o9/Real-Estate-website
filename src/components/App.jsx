@@ -8,16 +8,20 @@ import Login from "../pages/login";
 import Admin_Login from "../pages/Admin_login";
 import ViewProp from "../pages/view_prop";
 import PostAd from "../pages/post_ad";
-
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import CombinedAuth from "../pages/combinedAuth";
+import Landing from "../pages/landing";
+
 
 function App() {
   return (
       <Router>
         <Routes>
 
-          <Route exact path="/" element={<Home />} />
-            
+          <Route exact path="/" element={<Landing />} />
+          
+          <Route exact path="/home" element={<Home />} />
+
           <Route path="post" element={<Post />} />  
           
           <Route path="post_ad" element={<PostAd />} />
@@ -25,7 +29,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
 
           <Route path="signup" element={<Signup />} />
-
+          <Route path="loginout" element={<CombinedAuth />} />
           <Route path="login" element={<Login />} />
 
           <Route path="adminLogin" element={<Admin_Login />} />

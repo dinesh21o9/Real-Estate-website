@@ -362,9 +362,9 @@ function Home() {
                 <ion-icon name="location-outline"></ion-icon>
 
                 <address class="address">
-                  If you liked the website,<br/>
-                  do let me know by<br/>
-                  giving Intern 
+                  NIT Kurukshetra,<br/>
+                  Thanesar,<br/>
+                  Haryana
                   <a href="/#" class="address-link">View on Google map</a>
                 </address>
               </li>

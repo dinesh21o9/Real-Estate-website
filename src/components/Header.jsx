@@ -33,7 +33,7 @@ function Header() {
         <nav className="navbar container" data-navbar>
           <ul className="navbar-list">
             <li>
-              <NavLink to="/" className="navbar-link" data-nav-link>
+              <NavLink to="/home" className="navbar-link" data-nav-link>
                 Home
               </NavLink>
             </li>
@@ -59,15 +59,15 @@ function Header() {
               </NavLink>
             </li>
             <li>
-              <a href="/#" className="navbar-link" data-nav-link>
-                Contact
+              <a href="/post_ad" className="navbar-link" data-nav-link>
+                Post Ads
               </a>
             </li>
           </ul>
         </nav>
         
-        <NavLink to="/signup" className="btn btn-secondary btn-lg" data-nav-link>
-          Signup / Login
+        <NavLink to="/loginout" className="btn btn-secondary btn-lg" data-nav-link>
+          Log out
         </NavLink>
 
         <button className="nav-toggle-btn" data-nav-toggler>

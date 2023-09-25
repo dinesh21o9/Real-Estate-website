@@ -32,7 +32,7 @@ const Signup = () => {
       setError("Passwords do not match");
       return;
     }
-
+    console.log(data);
     axios
       .post("http://localhost:80/api/login/", data)
       .then(function (response) {

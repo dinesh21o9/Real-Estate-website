@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import DynamicFields from "../components/Dynamic_input";
 import "./Post.css";
 
@@ -1139,7 +1139,7 @@ const Post = () => {
       return;
     }
     
-    console.log(values);
+    // console.log(values);
 
     // axios
     //   .post("http://localhost:80/api/property/", values)
@@ -1154,6 +1154,7 @@ const Post = () => {
     //     console.error("Error:", error);
     //     setError("An error occurred. Please try again later.");
     //   });
+    setIsSubmitted(true);
   };
 
   return (
