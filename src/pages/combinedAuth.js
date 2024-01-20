@@ -24,7 +24,7 @@ const CombinedAuth = () => {
   const navigate = useNavigate(); // Initialize useNavigate
   const [error, setError] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
-
+  console.log(error);
   const handleToggleMode = () => {
     setIsSignUp(!isSignUp);
     clearFormData();
