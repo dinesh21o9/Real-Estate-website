@@ -36,6 +36,21 @@
     margin-bottom: 1.5rem;
   }
   
+  /* Style for loading container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust to fit your layout */
+}
+
+/* Style for the loading text */
+.loading-container span {
+  margin-top: 10px; /* Adjust the margin as needed */
+  color: #6e82c4; /* Set the text color */
+}
+
   .info p {
     display: flex;
     align-items: center;

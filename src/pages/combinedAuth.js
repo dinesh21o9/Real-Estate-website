@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./combined-auth.css"; // Import your CSS file here
 import { Link , useNavigate } from "react-router-dom";
+import { BounceLoader } from "react-spinners";
+
 
 const CombinedAuth = () => {
   const [done, setDone] = useState(false);
@@ -21,9 +23,10 @@ const CombinedAuth = () => {
       page: "signup"
     });
   };
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [error, setError] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleToggleMode = () => {
     setIsSignUp(!isSignUp);
@@ -36,6 +39,7 @@ const CombinedAuth = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (isSignUp) {
       // Handle sign-up form submission
@@ -43,11 +47,13 @@ const CombinedAuth = () => {
       
       if (!name || !email || !password || !passwordConfirmation) {
         setError("Please fill in all the fields");
+        setLoading(false);
         return;
       }
       
       if (password !== passwordConfirmation) {
         setError("Passwords do not match");
+        setLoading(false);
         return;
       }
 
@@ -55,7 +61,12 @@ const CombinedAuth = () => {
 
       // console.log(formData);
       axios
-        .post("http://localhost:80/api/login/", formData)
+      // https://homeseekrapi.000webhostapp.com/api/login/
+      // http://homeseekrapi.000.pe/login/
+      // http://localhost:80/api/login/
+      // https://homeseekrapi2.onrender.com/login
+
+        .post("https://homeseekrapi2.onrender.com/login", formData)
         .then(function (response) {
           if (response.data.status) {
             setDone(true);
@@ -63,10 +74,12 @@ const CombinedAuth = () => {
           } else {
             setError("Provided Email has an account!");
           }
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Error:", error);
-          setError("An error occurred. Please try again.");
+          setError("An error occurred. Please try again later");
+          setLoading(false);
         });
     } 
     else {
@@ -74,6 +87,7 @@ const CombinedAuth = () => {
       
       if (!formData.email || !formData.password) {
         setError("Please enter both email and password");
+        setLoading(false);
         return;
       }
 
@@ -81,23 +95,30 @@ const CombinedAuth = () => {
 
       // console.log(formData);
       axios
-        .post("http://localhost:80/api/login/", formData)
+      // https://homeseekrapi.000webhostapp.com/api/login/
+      // http://homeseekrapi.000.pe/login/
+      // http://localhost:80/api/login/
+      // https://homeseekrapi2.onrender.com/login
+        .post("https://homeseekrapi2.onrender.com/login", formData)
         .then(function (response) {
           if (response.data.status) {
             //jwt is in response.data.token
             window.token = response.data.token;
             console.log(window.token);
             setDone(true);  
-
+            localStorage.setItem('auth' , window.token)
             navigate("/home");
 
           } else {
             setError("Invalid Credentials");
           }
+          setLoading(false);
         })
         .catch((error) => {
+          console.log(error);
           console.error("Error:", error);
           setError("An error occurred. Please try again.");
+          setLoading(false);
         });
     }
   };
@@ -105,11 +126,11 @@ const CombinedAuth = () => {
   return (
     <div className={`combined-Auth-container ${isSignUp ? "combined-Auth-sign-up-mode" : ""}`}>
       {done ? (
-        <div>
-          <p className="combined-Auth-success-message">Authentication successful.</p>
+        <div className="done-box">
+          <p className="combined-Auth-success-message">Registeration successful.</p>
           <span className="combined-Auth-login-message">You can now</span>
-          <Link to="/post" className="combined-Auth-login-link">
-            Post
+          <Link to="/home" className="combined-Auth-login-link">
+            Login!
           </Link>
         </div>
       ) : (
@@ -141,11 +162,25 @@ const CombinedAuth = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <input
+                {error && <p className="error">{error}</p>}
+                {/* <input
                   type="submit"
                   className="combined-Auth-btn"
                   value="Login"
-                />
+                /> */}
+                <button
+                  type="submit"
+                  className={`combined-Auth-btn${loading ? "-loading" : ""}`} // Add a "loading" class when loading
+                >
+                  {loading ? (
+                    <div className="loader-wrapper">
+                      <BounceLoader color={"white"} size={20} loading={loading} />
+                      <span style = {{margin: '10px'}} >Loading...</span>
+                    </div>
+                  ) : (
+                    "Login"
+                  )}
+                </button>
 
               </form>
 
@@ -193,11 +228,26 @@ const CombinedAuth = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <input
+                {error && <p className="error">{error}</p>}
+                {/* <input
                   type="submit"
                   className="combined-Auth-btn"
                   value="Sign up"
-                />
+                /> */}
+                <button
+                  type="submit"
+                  className={`combined-Auth-btn${loading ? "-loading" : ""}`} // Add a "loading" class when loading
+                  value ="Sign up"
+                >
+                  {loading ? (
+                    <div className="loader-wrapper">
+                      <BounceLoader color={"white"} size={20} loading={loading} />
+                      <span style = {{margin: '10px'}} >Loading...</span>
+                    </div>
+                  ) : (
+                    "Sign Up"
+                  )}
+                </button>
               </form>
 
             </div>

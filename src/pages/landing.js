@@ -16,9 +16,14 @@ const Landing = () => {
           <p className="landing-primary-text">
             Explore an extensive selection of real estate listings and find the home of your dreams today!
           </p>
-          <button className="landing-secondary-button" onClick={() => navigate("/loginout")}>
-            Sign in <FiArrowRight />{" "}
-          </button>
+          <div className="landing-button-container">
+            <button className="landing-secondary-button" onClick={() => navigate("/loginout")}>
+              Sign in <FiArrowRight />
+            </button>
+            <button className="landing-secondary-button" onClick={() => navigate("/home")}>
+              Home
+            </button>
+          </div>
         </div>
 
         <div className="landing-home-bannerImage-container">

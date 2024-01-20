@@ -3,7 +3,7 @@ import axios from "axios";
 import "./login.css";
 import { Link } from "react-router-dom";
 
-const Admin_Login = () => {
+const ADMIN_LOGIN = () => {
   const [page, setPage] = useState(false);
   const [data, setData] = useState({
     email: "",
@@ -26,7 +26,7 @@ const Admin_Login = () => {
     }
     
     axios
-      .post("http://localhost:80/api/login/", data)
+      .post("https://homeseekrapi2.onrender.com/login", data)
       .then(function (response) {
         
         // console.log(response.data.status);
@@ -94,4 +94,4 @@ const Admin_Login = () => {
   );
 };
 
-export default Admin_Login;
+export default ADMIN_LOGIN;

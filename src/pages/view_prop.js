@@ -4,11 +4,15 @@ import { useParams } from 'react-router-dom';
 import "./view_prop.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from "axios";
+import { PuffLoader } from "react-spinners";
+
 
 const ViewProp = () => {
   const [property, setProperty] = useState({});
   const [user, setUser] = useState({});
   const [isSaved, setIsSaved] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   
   //Used to get offer and prop_id which are in link
   const { offer, prop_id } = useParams();
@@ -19,17 +23,23 @@ const ViewProp = () => {
 
   const getProperty = (propId, offer) => {
     axios
-      .post("http://localhost:80/api/property/", {
+      // https://homeseekrapi.000webhostapp.com/api/login/
+      // http://homeseekrapi.000.pe/login/
+      // http://localhost:80/api/login/
+      // https://homeseekrapi2.onrender.com/login
+      .post("https://homeseekrapi2.onrender.com/login", {
         prop_id: propId,
         offer: offer,
         page: 'viewProp',
       })
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setProperty(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching property data:", error);
+        setLoading(false);
       });
 
 
@@ -54,7 +64,13 @@ const ViewProp = () => {
 
       <Header />
 
-      {property && (
+      {loading ? ( // Render loading state
+        <div className="loading-container">
+            <PuffLoader color={"#123abc"} size={60} loading={loading} />
+            <span style={{color: '#6e82c4'}}>Loading...</span>
+        </div>
+        ) : (
+          
         <section className="view-property">
           <h1 className="heading">Property Details</h1>
           <div className="details">
@@ -220,7 +236,6 @@ const ViewProp = () => {
             </form>
           </div>
         </section>
-
       )}
     </div>
   );

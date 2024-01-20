@@ -5,12 +5,13 @@ import Dashboard from "../pages/dashboard";
 import Error from "../pages/Error";
 import Signup from "../pages/signup";
 import Login from "../pages/login";
-import Admin_Login from "../pages/Admin_login";
+import ADMIN_LOGIN from "../pages/Admin_login";
 import ViewProp from "../pages/view_prop";
-import PostAd from "../pages/post_ad";
+// import PostAd from "../pages/post_ad";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import CombinedAuth from "../pages/combinedAuth";
 import Landing from "../pages/landing";
+import ProtectedRoute from "../ProtectedRoutes";
 
 
 function App() {
@@ -18,21 +19,21 @@ function App() {
       <Router>
         <Routes>
 
-          <Route exact path="/" element={<Landing />} />
+          <Route path="/" element={<Landing />} />
           
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/home" element={<Home />}/>
 
-          <Route path="post" element={<Post />} />  
+          <Route path="post" element={<ProtectedRoute Component = {Post} />} />  
           
-          <Route path="post_ad" element={<PostAd />} />
+          {/* <Route path="post_ad" element={<PostAd />} /> */}
             
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />}/>
 
           <Route path="signup" element={<Signup />} />
           <Route path="loginout" element={<CombinedAuth />} />
           <Route path="login" element={<Login />} />
 
-          <Route path="adminLogin" element={<Admin_Login />} />
+          <Route path="adminLogin" element={<ADMIN_LOGIN />} />
 
           <Route path="/viewProp/:offer/:prop_id" Component={ViewProp} />
 
