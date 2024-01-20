@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 function Header() {
+  
+  function handleLogOut() {
+    localStorage.removeItem('auth');
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("[data-header]");
@@ -58,17 +63,23 @@ function Header() {
                 Dashboard
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <a href="/post_ad" className="navbar-link" data-nav-link>
                 Post Ads
               </a>
-            </li>
+            </li> */}
           </ul>
         </nav>
+        {localStorage.auth ? (
+          <NavLink to="/loginout" onClick={handleLogOut} className="btn btn-secondary btn-lg" data-nav-link>
+            Log out
+          </NavLink>
+        ) :
+          <NavLink to="/loginout" onClick={handleLogOut} className="btn btn-secondary btn-lg" data-nav-link>
+            Log in
+          </NavLink>
+        }
         
-        <NavLink to="/loginout" className="btn btn-secondary btn-lg" data-nav-link>
-          Log out
-        </NavLink>
 
         <button className="nav-toggle-btn" data-nav-toggler>
           <ion-icon name="menu-outline" className="menu-icon"></ion-icon>

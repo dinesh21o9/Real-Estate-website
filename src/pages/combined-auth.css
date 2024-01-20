@@ -130,6 +130,49 @@ form.combined-Auth-sign-in-form-sign-up-mode {
   font-weight: 500;
 }
 
+.done-box{
+  background-color: #f0f0f0;
+  margin: 5% 45%;
+  margin-left: 100px;
+  border-radius: 20px;
+  text-align: center;
+  padding: 3.5%;
+  width: 25%;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.done-box p{
+  color: black;
+  font-weight: 600;
+  font-size: 1000;
+}
+
+.loader-wrapper {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+}
+
+/* Style for the loader */
+.loader-wrapper .react-spinner-loader {
+  margin-right: 10px; /* Adjust the margin to control the space between the loader and the text */
+}
+
+.combined-Auth-btn-loading {
+  width: 150px;
+  background-color: hsl(142, 76%, 36%);
+  /* background-color: #5995fd; */
+  border: none;
+  outline: none;
+  height: 49px;
+  border-radius: 49px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+  padding-left: 15px; /* Adjust the left padding to your desired value */
+}
+
 .combined-Auth-btn {
   width: 150px;
   background-color: hsl(142, 76%, 36%);

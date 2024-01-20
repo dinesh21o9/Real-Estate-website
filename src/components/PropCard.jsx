@@ -45,8 +45,10 @@ const PropCard = (props) => {
   const navigate = useNavigate();
 
   const handleView = (offer, prop_id) => {
-    // Redirect to the "ViewProp" component/page and pass `prop_id` and `offer` as URL parameters
-    navigate(`/viewProp/${offer}/${prop_id}`);
+    if(!localStorage.auth){
+      navigate(`/loginout`);
+    }else
+      navigate(`/viewProp/${offer}/${prop_id}`);
   };
 
   const data = {

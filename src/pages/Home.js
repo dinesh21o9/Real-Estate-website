@@ -4,9 +4,16 @@ import property from "../property"
 import FeaturedCard from "../components/featuredCard";
 import Featuredprops from "../Featuredprops";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 
 function Home() {
+  const navigate = useNavigate();
+  
+  const handleSubmit = () =>{
+    navigate("/dashboard");
+  }
+
   return (
     <div>
 
@@ -78,7 +85,7 @@ function Home() {
                     </select>
                   </div>
 
-                  <button type="submit" class="search-btn btn btn-outline-success">
+                  <button type="submit" class="search-btn btn btn-outline-success" onClick={handleSubmit}>
                     Search
                   </button>
 

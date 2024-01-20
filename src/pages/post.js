@@ -9,8 +9,8 @@ import "./Post.css";
 const Post = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [selectedOffer, setSelectedOffer] =useState("rent");
-  const [selectedProp_Type, setSelectedProp_Type] =useState("residential");
+  const [selectedOffer, setSelectedOffer] = useState("rent");
+  const [selectedProp_Type, setSelectedProp_Type] = useState("residential");
   // const [selectedFields, setSelectedFields] = useState([]);
 
   // const sale = [
@@ -1142,7 +1142,11 @@ const Post = () => {
     // console.log(values);
 
     // axios
-    //   .post("http://localhost:80/api/property/", values)
+      // https://homeseekrapi.000webhostapp.com/api/login/
+      // http://homeseekrapi.000.pe/login/
+      // http://localhost:80/api/login/
+      // https://homeseekrapi2.onrender.com/login
+    //   .post("https://homeseekrapi2.onrender.com/login", values)
     //   .then(function (response) {
     //     // console.log(response);
     //     if (response.data.status) setIsSubmitted(true);
@@ -1179,7 +1183,7 @@ const Post = () => {
 
               <p>Property type <span>*</span></p>
                 <select name="property_type" value={selectedProp_Type} onChange={handleProp_TypeChange} required className="input" >
-                  <option value="" selected>Select Property Type</option>
+                  <option value="" defaultValue >Select Property Type</option>
                   <option value="residential">Residential</option>
                   <option value="independent">Independent</option>
                   <option value="industrial">Industrial</option>
@@ -1190,7 +1194,7 @@ const Post = () => {
               
               <p>Offer type <span>*</span></p>
                 <select name="offer" value={selectedOffer} onChange={handleOfferChange} required className="input" >
-                  <option value="" selected>Select Offer Type</option>
+                  <option value="" defaultValue >Select Offer Type</option>
                   <option value="sale">Sale</option>
                   <option value="rent">Rent</option>
                 </select>
