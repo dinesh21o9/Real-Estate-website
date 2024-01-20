@@ -34,7 +34,7 @@ const Signup = () => {
     }
     console.log(data);
     axios
-      .post("http://localhost:80/api/login/", data)
+      .post("https://homeseekrapi2.onrender.com/login", data)
       .then(function (response) {
         console.log(response.data);
         if(response.data.status)
