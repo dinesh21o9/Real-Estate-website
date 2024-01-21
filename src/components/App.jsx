@@ -5,7 +5,7 @@ import Dashboard from "../pages/dashboard";
 import Error from "../pages/Error";
 import Signup from "../pages/signup";
 import Login from "../pages/login";
-import ADMIN_LOGIN from "../pages/Admin_login";
+import AdminLogin from "../pages/Admin_login";
 import ViewProp from "../pages/view_prop";
 // import PostAd from "../pages/post_ad";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
@@ -33,7 +33,7 @@ function App() {
           <Route path="loginout" element={<CombinedAuth />} />
           <Route path="login" element={<Login />} />
 
-          <Route path="adminLogin" element={<ADMIN_LOGIN />} />
+          <Route path="adminLogin" element={<AdminLogin />} />
 
           <Route path="/viewProp/:offer/:prop_id" Component={ViewProp} />
 
