@@ -4,6 +4,13 @@
     color: black;
     background-color: white;
   }
+  .Section-Wrapper{
+    justify-content: center;
+  }
+  .Wrapper{
+    max-width: 70%;
+    margin: 0 auto;
+  }
   
   .heading {
     font-size: 3.5rem;
@@ -84,6 +91,7 @@
   .box p {
     color: #777;
     font-size: 1.8rem;
+    margin: 0 auto;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;

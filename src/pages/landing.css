@@ -65,10 +65,10 @@
   }
 
   .landing-button-container {
+    width: 100%;
     display: flex;
     gap: 10%; /* Add some space between the buttons */
-    padding-left: 20%;
-    align-items: flex-start; /* Align buttons with text */
+    padding-left: 30%;
   }
   
   /* Styles for the secondary button */
@@ -79,7 +79,7 @@
     padding: 15px 35px; /* Increase the padding for a bigger button */
     font-size: 2.3rem;
     border: none;
-    border-radius: 25px; /* Make the button edges round */
+    border-radius: 20px; /* Make the button edges round */
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 0; /* Remove left margin */
