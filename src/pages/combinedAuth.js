@@ -69,7 +69,7 @@ const CombinedAuth = () => {
         // http://localhost:80/api/login/
         // https://homeseekrapi2.onrender.com/login
 
-        .post("http://localhost:80/api/login/", formData)
+        .post("https://homeseekrapi2.onrender.com/login", formData)
         .then(function (response) {
           if (response.data.status) {
             setDone(true);
@@ -100,7 +100,7 @@ const CombinedAuth = () => {
         // http://homeseekrapi.000.pe/login/
         // http://localhost:80/api/login/
         // https://homeseekrapi2.onrender.com/login
-        .post("http://localhost:80/api/login/", formData)
+        .post("https://homeseekrapi2.onrender.com/login", formData)
         .then(function (response) {
           if (response.data.status) {
             //jwt is in response.data.token

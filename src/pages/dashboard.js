@@ -21,7 +21,7 @@ const Dashboard = () => {
       // http://homeseekrapi.000.pe/login/
       // http://localhost:80/api/login/
       // https://homeseekrapi2.onrender.com/login
-      .post("http://localhost:80/api/login/", data)
+      .post("https://homeseekrapi2.onrender.com/login", data)
       .then(function (response) {
         console.log(response.data);
         setProperties(response.data);

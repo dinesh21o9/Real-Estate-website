@@ -107,7 +107,7 @@ const Post = () => {
     }
     axios
       // https://homeseekrapi2.onrender.com/login
-      .post("http://localhost:80/api/login/", values)
+      .post("https://homeseekrapi2.onrender.com/login", values)
       .then(function (response) {
         console.log(response);
         if (response.data.status) setIsSubmitted(true);
