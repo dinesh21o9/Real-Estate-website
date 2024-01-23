@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
 import PropCard from "../components/PropCard";
 import axios from "axios";
 import { PuffLoader } from "react-spinners";
@@ -35,7 +34,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      {/* <Header /> */}
       {loading ? (
         <div
           style={{
