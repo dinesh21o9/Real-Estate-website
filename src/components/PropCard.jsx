@@ -1,11 +1,10 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const PropCard = (props) => {
+const PropCard = ({ property, properties, setProperties }) => {
   const {
-    rent,
+    // rent,
     offer,
     address,
     bathroom,
@@ -15,32 +14,33 @@ const PropCard = (props) => {
     parking_area,
     price,
     prop_id,
+    editAccess,
     property_name,
-  } = props.property;
+  } = property;
 
-  const handleApprove = () => {
-    // Send an API request to update the property status as approved
-    axios
-      .put('/api/property', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
-      .then(response => {
-        // Handle the response
-      })
-      .catch(error => {
-        // Handle the error
-      });
-  };
+  // const handleEdit = () => {
+  //   // Send an API request to update the property status as approved
+  //   axios
+  //     .put('/api/property', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
+  //     .then(response => {
+  //       // Handle the response
+  //     })
+  //     .catch(error => {
+  //       // Handle the error
+  //     });
+  // };
 
-  const handleDecline = () => {
-    // Send an API request to delete the corresponding property
-    axios
-      .delete(`/api/property/${prop_id}`) // Use prop_id directly
-      .then(response => {
-        // Handle the response
-      })
-      .catch(error => {
-        // Handle the error
-      });
-  };
+  const handleDelete = () => {
+  axios
+    .delete(`http://localhost/api/login/?prop_id=${prop_id}`)
+    .then(response => {
+      console.log("Property deleted successfully");
+      setProperties(prevProperties => prevProperties.filter(item => item.prop_id !== prop_id));
+    })
+    .catch(error => {
+      console.error("Error deleting property:", error);
+    });
+};
 
   const navigate = useNavigate();
 
@@ -50,21 +50,6 @@ const PropCard = (props) => {
     }else
       navigate(`/viewProp/${offer}/${prop_id}`);
   };
-
-  const data = {
-    cookie: window.token,
-  };
-
-  const [admin, setAdmin] = useState(false);
-
-  axios
-    .post('http://localhost:80/api/property/', data)
-    .then(function (response) {
-      // console.log(response.data);
-      if (response.data.status) {
-        setAdmin(true);
-      }
-    });
 
   return (
     <div className="prop-card">
@@ -128,10 +113,10 @@ const PropCard = (props) => {
           <div className="prop-card-value">{description}</div>
         </div>
 
-        <div className="prop-card-field">
+        {/* <div className="prop-card-field">
           <div className="prop-card-label">Rent:</div>
           <div className="prop-card-value">{rent}</div>
-        </div>
+        </div> */}
 
         <div className="prop-card-field">
           <div className="prop-card-label">Area in sq ft:</div>
@@ -161,17 +146,16 @@ const PropCard = (props) => {
           View
         </button>
       </div>
-
-      {admin && (
+      {editAccess && (
         <div className="prop-card-buttons">
-          <button className="prop-card-button approve-button" onClick={handleApprove}>
-            Approve
-          </button>
-          <button className="prop-card-button decline-button" onClick={handleDecline}>
-            Decline
+          {/* <button className="prop-card-button approve-button" onClick={handleEdit}>
+            Edit
+          </button> */}
+          <button className="prop-card-button decline-button" onClick={handleDelete}>
+            Delete
           </button>
         </div>
-      )}
+       )}
     </div>
   );
 };

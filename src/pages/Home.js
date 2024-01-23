@@ -15,7 +15,7 @@ function Home() {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
 
       <main>
         <article class="article">

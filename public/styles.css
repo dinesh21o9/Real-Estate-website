@@ -489,7 +489,7 @@ body {
   border-radius: var(--radius-12);
   box-shadow: var(--shadow-4);
   overflow: hidden;
-  /* width: 350px; */
+  /* min-width: 60%; */
   height: 600px;
   transition: var(--transition);
 }
@@ -1011,7 +1011,7 @@ text-decoration: none; }
   padding: 20px;
   background-color: #ffffff;
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 50%;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -1033,5 +1033,7 @@ text-decoration: none; }
 
 .PropCard-field{
   margin-top: 90px;
+  width: 100%;
+  /* padding: 0 20%; */
 }
 

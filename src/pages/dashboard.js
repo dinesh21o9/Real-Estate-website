@@ -6,12 +6,14 @@ import { PuffLoader } from "react-spinners";
 import "./dashboard.css";
 
 const Dashboard = () => {
-  const [prop, setProp] = useState([]);
+  const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getProp();
-  }, []);
+  const authToken = localStorage.getItem("auth");
+  const data = {
+    cookie: authToken,
+    page: "dashboard",
+  };
 
   function getProp() {
     axios
@@ -19,17 +21,21 @@ const Dashboard = () => {
       // http://homeseekrapi.000.pe/login/
       // http://localhost:80/api/login/
       // https://homeseekrapi2.onrender.com/login
-      .get('https://homeseekrapi2.onrender.com/login')
+      .post("https://homeseekrapi2.onrender.com/login", data)
       .then(function (response) {
         console.log(response.data);
-        setProp(response.data);
+        setProperties(response.data);
         setLoading(false);
       });
   }
 
+  useEffect(() => {
+    getProp();
+  }, []);
+
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       {loading ? (
         <div
           style={{
@@ -40,19 +46,26 @@ const Dashboard = () => {
           }}
         >
           <div className="loading-screen">
-              <PuffLoader color={"#123abc"} size={60} loading={loading} />
-              <span style={{color: '#6e82c4'}}>Loading...</span>
+            <PuffLoader color={"#123abc"} size={60} loading={loading} />
+            <span style={{ color: "#6e82c4" }}>Loading...</span>
           </div>
         </div>
-      ) : Array.isArray(prop) && prop.length > 0 ? (
+      ) : Array.isArray(properties) && properties.length > 0 ? (
         <div className="PropCard-field">
-          {prop.map((property, key) => (
-            <PropCard key={property.prop_id} property={property} />
+          {properties.map((property, key) => (
+            <PropCard
+              key={property.prop_id}
+              property={property}
+              properties={properties}
+              setProperties={setProperties}
+            />
           ))}
         </div>
       ) : (
         <div>
-          <h1>That's all folks!<br></br> Wait for people to post properties!</h1>
+          <h1>
+            That's all folks!<br></br> Wait for people to post properties!
+          </h1>
         </div>
       )}
     </div>

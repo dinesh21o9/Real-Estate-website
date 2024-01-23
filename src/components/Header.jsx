@@ -1,22 +1,27 @@
-import React, { useEffect } from "react";
-// import axios from "axios";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { NavLink, useLocation } from "react-router-dom";
+import userIcon from "./user.png";
 
 function Header() {
-  // const [userName, setUserName] = useState(null);
-
-  // useEffect(() => {
-  //   const fetchUserName = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:80/api/login/");
-  //       setUserName(response.data.userName);
-  //     } catch (error) {
-  //       console.error("Error fetching user name:", error);
-  //     }
-  //   };
-
-  //   fetchUserName();
-  // }, []);
+  const location = useLocation();
+  const [userName, setUserName] = useState(null);
+  
+  const data = {
+    page: 'header',
+    cookie: localStorage.getItem("auth")
+  }
+  useEffect(() => {
+    const fetchUserName = async () => {
+      try {
+        const response = await axios.post("http://localhost:80/api/login/", data);
+        setUserName(response.data.userName);
+      } catch (error) {
+        console.error("Error fetching user name:", error);
+      }
+    };
+    fetchUserName();
+  });
 
   function handleLogOut() {
     localStorage.removeItem("auth");
@@ -42,6 +47,15 @@ function Header() {
     };
   }, []);
 
+  const pathsToHideHeader = ["/", "/loginout"];
+
+  // Check if the current path is in the array
+  const shouldHideHeader = pathsToHideHeader.includes(location.pathname);
+
+  if (shouldHideHeader) {
+    return null;
+  }
+
   return (
     <header className="header" data-header>
       <div className="container">
@@ -56,17 +70,6 @@ function Header() {
                 Home
               </NavLink>
             </li>
-
-            {/* <li>
-              <a href="/#" className="navbar-link" data-nav-link>
-                Buy
-              </a>
-            </li> */}
-            {/* <li>
-              <a href="/#" className="navbar-link" data-nav-link>
-                Rent
-              </a>
-            </li>    */}
             <li>
               <NavLink to="/post" className="navbar-link" data-nav-link>
                 Post
@@ -85,17 +88,24 @@ function Header() {
           </ul>
         </nav>
 
-        {/* {userName && (
-          <div className="user-info" style={{ display: "flex" }}>
-            <img
-              width="50"
-              height="25"
-              src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png"
-              alt="user--v1"
-            />
-            <span className="user-greeting" style={{ padding:"10px", color:"black" }} >Hello, {userName}</span>
-          </div>
-        )} */}
+        {userName && (
+        <div
+          className="user-info"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <img
+            src={userIcon}
+            style={{ width: "30px", height: "30px", margin: "auto" }}
+            alt="user"
+          />
+          <span
+            className="user-greeting"
+            style={{ padding: "10px", color: "black" }}
+          >
+            Hello, {userName}
+          </span>
+        </div>
+        )} 
 
         {localStorage.auth ? (
           <NavLink
