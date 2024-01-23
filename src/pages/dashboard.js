@@ -4,32 +4,32 @@ import axios from "axios";
 import { PuffLoader } from "react-spinners";
 import "./dashboard.css";
 
-const Dashboard = () => {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+function getProp(setProperties, setLoading) {
   const authToken = localStorage.getItem("auth");
   const data = {
     cookie: authToken,
     page: "dashboard",
   };
 
-  function getProp() {
-    axios
-      // https://homeseekrapi.000webhostapp.com/api/login/
+  axios
+    // https://homeseekrapi.000webhostapp.com/api/login/
       // http://homeseekrapi.000.pe/login/
       // http://localhost:80/api/login/
       // https://homeseekrapi2.onrender.com/login
-      .post("https://homeseekrapi2.onrender.com/login", data)
-      .then(function (response) {
-        console.log(response.data);
-        setProperties(response.data);
-        setLoading(false);
-      });
-  }
+    .post("https://homeseekrapi2.onrender.com/login", data)
+    .then(function (response) {
+      console.log(response.data);
+      setProperties(response.data);
+      setLoading(false);
+    });
+}
+
+const Dashboard = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProp();
+    getProp(setProperties, setLoading);
   }, []);
 
   return (

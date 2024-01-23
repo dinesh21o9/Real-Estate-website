@@ -32,7 +32,7 @@ const PropCard = ({ property, properties, setProperties }) => {
 
   const handleDelete = () => {
   axios
-    .delete(`http://localhost/api/login/?prop_id=${prop_id}`)
+    .delete(`https://homeseekrapi2.onrender.com/login/?prop_id=${prop_id}`)
     .then(response => {
       console.log("Property deleted successfully");
       setProperties(prevProperties => prevProperties.filter(item => item.prop_id !== prop_id));

@@ -14,7 +14,7 @@ function Header() {
   useEffect(() => {
     const fetchUserName = async () => {
       try {
-        const response = await axios.post("http://localhost:80/api/login/", data);
+        const response = await axios.post("https://homeseekrapi2.onrender.com/login", data);
         setUserName(response.data.userName);
       } catch (error) {
         console.error("Error fetching user name:", error);
