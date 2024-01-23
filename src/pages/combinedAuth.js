@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./combined-auth.css"; // Import your CSS file here
-import { Link , useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
-
 
 const CombinedAuth = () => {
   const [done, setDone] = useState(false);
@@ -12,7 +11,7 @@ const CombinedAuth = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
-    page: "userLogin"
+    page: "userLogin",
   });
   const clearFormData = () => {
     setFormData({
@@ -20,7 +19,7 @@ const CombinedAuth = () => {
       email: "",
       password: "",
       passwordConfirmation: "",
-      page: "signup"
+      page: "signup",
     });
   };
   const navigate = useNavigate();
@@ -37,6 +36,10 @@ const CombinedAuth = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleToggleSignup = () => {
+    window.location.reload();
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -44,13 +47,13 @@ const CombinedAuth = () => {
     if (isSignUp) {
       // Handle sign-up form submission
       const { name, email, password, passwordConfirmation } = formData;
-      
+
       if (!name || !email || !password || !passwordConfirmation) {
         setError("Please fill in all the fields");
         setLoading(false);
         return;
       }
-      
+
       if (password !== passwordConfirmation) {
         setError("Passwords do not match");
         setLoading(false);
@@ -61,16 +64,15 @@ const CombinedAuth = () => {
 
       // console.log(formData);
       axios
-      // https://homeseekrapi.000webhostapp.com/api/login/
-      // http://homeseekrapi.000.pe/login/
-      // http://localhost:80/api/login/
-      // https://homeseekrapi2.onrender.com/login
+        // https://homeseekrapi.000webhostapp.com/api/login/
+        // http://homeseekrapi.000.pe/login/
+        // http://localhost:80/api/login/
+        // https://homeseekrapi2.onrender.com/login
 
-        .post("https://homeseekrapi2.onrender.com/login", formData)
+        .post("http://localhost:80/api/login/", formData)
         .then(function (response) {
           if (response.data.status) {
             setDone(true);
-            navigate("/loginout");
           } else {
             setError("Provided Email has an account!");
           }
@@ -81,10 +83,9 @@ const CombinedAuth = () => {
           setError("An error occurred. Please try again later");
           setLoading(false);
         });
-    } 
-    else {
+    } else {
       // Handle sign-in form submission
-      
+
       if (!formData.email || !formData.password) {
         setError("Please enter both email and password");
         setLoading(false);
@@ -95,20 +96,20 @@ const CombinedAuth = () => {
 
       // console.log(formData);
       axios
-      // https://homeseekrapi.000webhostapp.com/api/login/
-      // http://homeseekrapi.000.pe/login/
-      // http://localhost:80/api/login/
-      // https://homeseekrapi2.onrender.com/login
-        .post("https://homeseekrapi2.onrender.com/login", formData)
+        // https://homeseekrapi.000webhostapp.com/api/login/
+        // http://homeseekrapi.000.pe/login/
+        // http://localhost:80/api/login/
+        // https://homeseekrapi2.onrender.com/login
+        .post("http://localhost:80/api/login/", formData)
         .then(function (response) {
           if (response.data.status) {
             //jwt is in response.data.token
             window.token = response.data.token;
-            console.log(window.token);
-            setDone(true);  
-            localStorage.setItem('auth' , window.token)
+            // console.log(window.token);
+            setDone(true);
+            localStorage.setItem("auth", window.token);
             navigate("/home");
-
+            window.location.reload(); //to reload the header
           } else {
             setError("Invalid Credentials");
           }
@@ -124,27 +125,45 @@ const CombinedAuth = () => {
   };
 
   return (
-    <div className={`combined-Auth-container ${isSignUp ? "combined-Auth-sign-up-mode" : ""}`}>
+    <div
+      className={`combined-Auth-container ${
+        isSignUp ? "combined-Auth-sign-up-mode" : ""
+      }`}
+    >
       {done ? (
         <div className="done-box">
-          <p className="combined-Auth-success-message">Registeration successful.</p>
+          <p className="combined-Auth-success-message">
+            Registeration successful.
+          </p>
           <span className="combined-Auth-login-message">You can now</span>
-          <Link to="/home" className="combined-Auth-login-link">
-            Login!
-          </Link>
+          <button
+            id="go-to-login"
+            className="combined-Auth-login-link"
+            onClick={handleToggleSignup}
+          >
+            Sign-in!
+          </button>
         </div>
       ) : (
-        <div class ={`container ${isSignUp ? "sign-up-mode" : ""}`}>
+        <div class={`container ${isSignUp ? "sign-up-mode" : ""}`}>
           <div className="combined-Auth-forms-container">
-            <div className={`combined-Auth-signin-signup${isSignUp ? "-sign-up-mode" : ""}`}>
-
-              <form className={`combined-Auth-sign-in-form${isSignUp ? "-sign-up-mode" : ""}`} onSubmit={handleSubmit}>
-
+            <div
+              className={`combined-Auth-signin-signup${
+                isSignUp ? "-sign-up-mode" : ""
+              }`}
+            >
+              <form
+                className={`combined-Auth-sign-in-form${
+                  isSignUp ? "-sign-up-mode" : ""
+                }`}
+                onSubmit={handleSubmit}
+              >
                 <h2 className="combined-Auth-title">Sign in</h2>
-                    
+
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-envelope"></i>
                   <input
+                    id="email-login"
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -155,6 +174,7 @@ const CombinedAuth = () => {
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-lock"></i>
                   <input
+                    id="password-login"
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -169,28 +189,37 @@ const CombinedAuth = () => {
                   value="Login"
                 /> */}
                 <button
+                  id="submit-button-login"
                   type="submit"
                   className={`combined-Auth-btn${loading ? "-loading" : ""}`} // Add a "loading" class when loading
                 >
                   {loading ? (
                     <div className="loader-wrapper">
-                      <BounceLoader color={"white"} size={20} loading={loading} />
-                      <span style = {{margin: '10px'}} >Loading...</span>
+                      <BounceLoader
+                        color={"white"}
+                        size={20}
+                        loading={loading}
+                      />
+                      <span style={{ margin: "10px" }}>Loading...</span>
                     </div>
                   ) : (
                     "Login"
                   )}
                 </button>
-
               </form>
 
-              <form className={`combined-Auth-sign-up-form${isSignUp ? "-sign-up-mode" : ""}`} onSubmit={handleSubmit}>
-
+              <form
+                className={`combined-Auth-sign-up-form${
+                  isSignUp ? "-sign-up-mode" : ""
+                }`}
+                onSubmit={handleSubmit}
+              >
                 <h2 className="combined-Auth-title">Sign up</h2>
 
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-user"></i>
                   <input
+                    id="username-signup"
                     type="text"
                     placeholder="Username"
                     name="name"
@@ -201,6 +230,7 @@ const CombinedAuth = () => {
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-envelope"></i>
                   <input
+                    id="email-signup"
                     type="email"
                     placeholder="Email"
                     name="email"
@@ -211,6 +241,7 @@ const CombinedAuth = () => {
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-lock"></i>
                   <input
+                    id="password-signup"
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -221,6 +252,7 @@ const CombinedAuth = () => {
                 <div className="combined-Auth-input-field">
                   <i className="fas fa-lock"></i>
                   <input
+                    id="password-confirmation-signup"
                     type="password"
                     placeholder="Confirm Password"
                     name="passwordConfirmation"
@@ -235,56 +267,80 @@ const CombinedAuth = () => {
                   value="Sign up"
                 /> */}
                 <button
+                  id="submit-button-signup"
                   type="submit"
                   className={`combined-Auth-btn${loading ? "-loading" : ""}`} // Add a "loading" class when loading
-                  value ="Sign up"
+                  value="Sign up"
                 >
                   {loading ? (
                     <div className="loader-wrapper">
-                      <BounceLoader color={"white"} size={20} loading={loading} />
-                      <span style = {{margin: '10px'}} >Loading...</span>
+                      <BounceLoader
+                        color={"white"}
+                        size={20}
+                        loading={loading}
+                      />
+                      <span style={{ margin: "10px" }}>Loading...</span>
                     </div>
                   ) : (
                     "Sign Up"
                   )}
                 </button>
               </form>
-
             </div>
-
           </div>
 
           <div className="combined-Auth-panels-container">
-
-            <div className={`combined-Auth-panel combined-Auth-left-panel ${isSignUp ? "sign-up-mode" : ""}`}>
+            <div
+              className={`combined-Auth-panel combined-Auth-left-panel ${
+                isSignUp ? "sign-up-mode" : ""
+              }`}
+            >
               {/* Left panel content */}
               <div className="combined-Auth-content">
                 <h3>New here?</h3>
                 <p>
-                  Don't miss out! Sign up and gain access to our amazing features. <br></br>No more hassle of searching for a broker!
+                  Don't miss out! Sign up and gain access to our amazing
+                  features. <br></br>No more hassle of searching for a broker!
                 </p>
-                <button className="combined-Auth-btn combined-Auth-transparent" onClick={handleToggleMode}>
+                <button
+                  className="combined-Auth-btn combined-Auth-transparent"
+                  onClick={handleToggleMode}
+                >
                   Sign up
                 </button>
               </div>
-              <img src="./assets/images/log.png" class="combined-Auth-image" alt="" />
+              <img
+                src="./assets/images/log.png"
+                class="combined-Auth-image"
+                alt=""
+              />
             </div>
 
-            <div className={`combined-Auth-panel combined-Auth-right-panel ${isSignUp ? "sign-up-mode" : ""}`}>
+            <div
+              className={`combined-Auth-panel combined-Auth-right-panel ${
+                isSignUp ? "sign-up-mode" : ""
+              }`}
+            >
               {/* Right panel content */}
               <div className="combined-Auth-content">
                 <h3>One of us ?</h3>
                 <p>
-                  Welcome Back! Sign in for a personalized experience and access our top-notch services. 
-                  We're here for you.
+                  Welcome Back! Sign in for a personalized experience and access
+                  our top-notch services. We're here for you.
                 </p>
-                <button className="combined-Auth-btn combined-Auth-transparent" onClick={handleToggleMode}>
+                <button
+                  className="combined-Auth-btn combined-Auth-transparent"
+                  onClick={handleToggleMode}
+                >
                   Sign in
                 </button>
               </div>
-              <img src="./assets/images/register.png" class="combined-Auth-image" alt="" />
+              <img
+                src="./assets/images/register.png"
+                class="combined-Auth-image"
+                alt=""
+              />
             </div>
-
           </div>
         </div>
       )}

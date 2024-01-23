@@ -25,7 +25,7 @@ const ViewProp = () => {
       // http://homeseekrapi.000.pe/login/
       // http://localhost:80/api/login/
       // https://homeseekrapi2.onrender.com/login
-      .post("https://homeseekrapi2.onrender.com/login", {
+      .post("http://localhost:80/api/login/", {
         prop_id: propId,
         offer: offer,
         page: "viewProp",

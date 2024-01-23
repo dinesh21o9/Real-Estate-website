@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Post.css";
@@ -107,13 +106,13 @@ const Post = () => {
       return;
     }
     axios
-    // https://homeseekrapi2.onrender.com/login
-      .post("https://homeseekrapi2.onrender.com/login", values)
+      // https://homeseekrapi2.onrender.com/login
+      .post("http://localhost:80/api/login/", values)
       .then(function (response) {
         console.log(response);
         if (response.data.status) setIsSubmitted(true);
         else {
-          alert("Error! Maybe Session expired, Try Loging-in again!");
+          alert("Error! Maybe Session expired, Try Logging in again!");
         }
       })
       .catch((error) => {
@@ -124,8 +123,6 @@ const Post = () => {
 
   return (
     <div className="Warpper">
-      <Header />
-
       {isSubmitted ? (
         <div className="submitted-prop-card">
           <h2>Property Submitted Successfully!</h2>
@@ -138,7 +135,7 @@ const Post = () => {
               Post
             </button>
             , or go to
-            <Link class="link" to="/dashboard">
+            <Link className="link" to="/dashboard">
               Dashboard
             </Link>
           </span>
@@ -152,6 +149,7 @@ const Post = () => {
               </p>
               <input
                 type="text"
+                id="property_name"
                 name="property_name"
                 required
                 maxLength="50"
@@ -166,6 +164,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="price"
                   name="price"
                   required
                   min="0"
@@ -181,6 +180,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="deposit"
                   name="deposit"
                   required
                   min="0"
@@ -196,6 +196,7 @@ const Post = () => {
                 </p>
                 <input
                   type="text"
+                  id="address"
                   name="address"
                   required
                   maxLength="100"
@@ -207,7 +208,7 @@ const Post = () => {
                 <p>
                   Offer type <span>*</span>
                 </p>
-                <select name="offer" required className="input">
+                <select id="offer" name="offer" required className="input">
                   <option value="" selected>
                     Select Offer Type
                   </option>
@@ -219,7 +220,7 @@ const Post = () => {
                 <p>
                   Property type <span>*</span>
                 </p>
-                <select name="type" required className="input">
+                <select id="type" name="type" required className="input">
                   <option value="" selected>
                     Select Property Type
                   </option>
@@ -232,7 +233,7 @@ const Post = () => {
                 <p>
                   Property status <span>*</span>
                 </p>
-                <select name="status" required className="input">
+                <select id="status" name="status" required className="input">
                   <option value="" selected>
                     Select Property Status
                   </option>
@@ -244,7 +245,12 @@ const Post = () => {
                 <p>
                   Furnished status <span>*</span>
                 </p>
-                <select name="furnished" required className="input">
+                <select
+                  id="furnished"
+                  name="furnished"
+                  required
+                  className="input"
+                >
                   <option value="" selected>
                     Select Furnished Status
                   </option>
@@ -257,7 +263,7 @@ const Post = () => {
                 <p>
                   How many BHK <span>*</span>
                 </p>
-                <select name="bhk" required className="input">
+                <select id="bhk" name="bhk" required className="input">
                   <option value="" selected>
                     Select BHK
                   </option>
@@ -276,7 +282,7 @@ const Post = () => {
                 <p>
                   How many bedrooms <span>*</span>
                 </p>
-                <select name="bedroom" required className="input">
+                <select id="bedroom" name="bedroom" required className="input">
                   <option value="" selected>
                     Select Number of Bedrooms
                   </option>
@@ -296,7 +302,12 @@ const Post = () => {
                 <p>
                   How many bathrooms <span>*</span>
                 </p>
-                <select name="bathroom" required className="input">
+                <select
+                  id="bathroom"
+                  name="bathroom"
+                  required
+                  className="input"
+                >
                   <option value="" selected>
                     Select Number of Bathrooms
                   </option>
@@ -315,7 +326,7 @@ const Post = () => {
                 <p>
                   How many balconies <span>*</span>
                 </p>
-                <select name="balcony" required className="input">
+                <select id="balcony" name="balcony" required className="input">
                   <option value="" selected>
                     Select Number of Balconies
                   </option>
@@ -337,6 +348,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="carpet"
                   name="carpet"
                   required
                   min="1"
@@ -352,6 +364,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="age"
                   name="age"
                   required
                   min="0"
@@ -367,6 +380,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="total_floors"
                   name="total_floors"
                   required
                   min="0"
@@ -382,6 +396,7 @@ const Post = () => {
                 </p>
                 <input
                   type="number"
+                  id="room_floor"
                   name="room_floor"
                   required
                   min="0"
@@ -395,7 +410,7 @@ const Post = () => {
                 <p>
                   Loan <span>*</span>
                 </p>
-                <select name="loan" required className="input">
+                <select id="loan" name="loan" required className="input">
                   <option value="" selected>
                     Select Loan Availability
                   </option>
@@ -409,6 +424,7 @@ const Post = () => {
                 Property description <span>*</span>
               </p>
               <textarea
+                id="description"
                 name="description"
                 maxLength="1000"
                 className="input"
@@ -419,78 +435,128 @@ const Post = () => {
               ></textarea>
             </div>
             <div className="checkbox">
-                <label className="label-container">
-                  <p className="tick-title">
-                    Lifts
-                    <input type="checkbox" name="lift" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Security guard
-                    <input type="checkbox" name="security_guard" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Play ground
-                    <input type="checkbox" name="play_ground" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Garden
-                    <input type="checkbox" name="garden" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Water supply
-                    <input type="checkbox" name="water_supply" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Power backup
-                    <input type="checkbox" name="power_backup" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Parking area
-                    <input type="checkbox" name="parking_area" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Gym
-                    <input type="checkbox" name="gym" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Shopping mall
-                    <input type="checkbox" name="shopping_mall" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Hospital
-                    <input type="checkbox" name="hospital" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    School
-                    <input type="checkbox" name="school" value="yes" />
-                  </p>
-                </label>
-                <label className="label-container">
-                  <p className="tick-title">
-                    Market area
-                    <input type="checkbox" name="market_area" value="yes" />
-                  </p>
-                </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Lifts
+                  <input type="checkbox" id="lift" name="lift" value="yes" />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Security guard
+                  <input
+                    type="checkbox"
+                    id="security_guard"
+                    name="security_guard"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Play ground
+                  <input
+                    type="checkbox"
+                    id="play_ground"
+                    name="play_ground"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Garden
+                  <input
+                    type="checkbox"
+                    id="garden"
+                    name="garden"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Water supply
+                  <input
+                    type="checkbox"
+                    id="water_supply"
+                    name="water_supply"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Power backup
+                  <input
+                    type="checkbox"
+                    id="power_backup"
+                    name="power_backup"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Parking area
+                  <input
+                    type="checkbox"
+                    id="parking_area"
+                    name="parking_area"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Gym
+                  <input type="checkbox" id="gym" name="gym" value="yes" />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Shopping mall
+                  <input
+                    type="checkbox"
+                    id="shopping_mall"
+                    name="shopping_mall"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Hospital
+                  <input
+                    type="checkbox"
+                    id="hospital"
+                    name="hospital"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  School
+                  <input
+                    type="checkbox"
+                    id="school"
+                    name="school"
+                    value="yes"
+                  />
+                </p>
+              </label>
+              <label className="label-container">
+                <p className="tick-title">
+                  Market area
+                  <input
+                    type="checkbox"
+                    id="market_area"
+                    name="market_area"
+                    value="yes"
+                  />
+                </p>
+              </label>
             </div>
             {error && <p className="error">{error}</p>}
             <button type="submit" className="post-button">
