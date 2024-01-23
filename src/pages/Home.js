@@ -3,7 +3,6 @@ import Card from "../components/card";
 import property from "../property";
 import FeaturedCard from "../components/featuredCard";
 import Featuredprops from "../Featuredprops";
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -15,8 +14,6 @@ function Home() {
 
   return (
     <div>
-      {/* <Header /> */}
-
       <main>
         <article class="article">
           <section class="section hero" aria-label="hero">
