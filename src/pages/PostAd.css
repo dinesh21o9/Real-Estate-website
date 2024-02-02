@@ -1,77 +1,108 @@
-/* PostAd.css */
 .post_ad-container {
-    max-width: 600px;
-    margin: 100px auto;
-    padding: 20px;
-  }
-  
-  .post_ad-container h1 {
-    margin-bottom: 20px;
-  }
-  
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.post_ad-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.post_ad-form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.post_ad-form-group label {
+  font-weight: bold;
+  color: #494949;
+  margin-right: 10px; /* Adjust space between label and input */
+  flex: 1; /* Allows label to take up space but not as much as input */
+}
+
+.post_ad-form-group input[type="text"],
+.post_ad-form-group input[type="date"],
+.post_ad-form-group input[type="number"],
+.post_ad-form-group select,
+.post_ad-form-group textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  outline: none;
+  flex: 3; /* Allows input to take more space */
+}
+
+.post_ad-form-group textarea {
+  resize: vertical;
+}
+
+.post_ad-button {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.post_ad-button:hover {
+  background-color: #0056b3;
+}
+
+.post_ad-posted-ads-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.post_ad-posted-ads-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.post_ad-posted-ads-container ul {
+  color: black;
+  list-style: none;
+  padding: 0;
+}
+
+.post_ad-posted-ads-container li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .post_ad-form-group {
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
+
   .post_ad-form-group label {
-    display: block;
-    font-weight: bold;
+    margin-bottom: 5px;
+    margin-right: 0; /* Remove the right margin on mobile */
   }
-  
-  .post_ad-form-group input[type="text"] ,
-  .post_ad-form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .post_ad-form-group input[type="number"] ,
-  .post_ad-form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  
-  .post_ad-form-group textarea {
-    resize: vertical;
-  }
-  
+
   .post_ad-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 8px 0;
   }
-  
-  .post_ad-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .post_ad-posted-ads-container {
-    max-width: 600px;
-    margin: 20px auto;
-  }
-  
-  .post_ad-posted-ads-container h2 {
-    margin-bottom: 10px;
-  }
-  
-  .post_ad-posted-ads-container ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .post_ad-posted-ads-container li {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-  }
-  
+}
