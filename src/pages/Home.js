@@ -12,6 +12,10 @@ function Home() {
     navigate("/dashboard");
   };
 
+  const navigateToPostAd = () => {
+    navigate("/post_ad");
+  }
+
   return (
     <div>
       <main>
@@ -262,10 +266,10 @@ function Home() {
           <section class="newsletter" aria-label="newsletter">
             <div class="container">
               <div class="wrapper">
-                <h2 class="h2 section-title">Subscribe to Newsletter!</h2>
+                <h2 class="h2 section-title">Add posts to HomeSeekr!</h2>
 
                 <p class="section-text">
-                  Subscribe to get latest updates and information.
+                  You can add posts and we will display it for you!
                 </p>
               </div>
 
@@ -273,14 +277,14 @@ function Home() {
                 <input
                   type="email"
                   name="email_address"
-                  placeholder="Enter your email :"
+                  placeholder=" "
                   aria-label="Enter your email"
                   required
                   class="email-field"
                 />
 
-                <button type="submit" class="btn btn-secondary">
-                  Subscribe
+                <button type="submit" class="btn btn-secondary" onClick={navigateToPostAd}>
+                  Post Ads
                 </button>
               </form>
             </div>
