@@ -16,9 +16,10 @@ const PostAd = () => {
   const [bathrooms, setBathrooms] = useState(1);
   const [propertySize, setPropertySize] = useState("");
   const [amenities, setAmenities] = useState("");
-  const [isFurnished, setIsFurnished] = useState(false); // Toggle switch
+  const [isFurnished, setIsFurnished] = useState(false); 
   const [images, setImages] = useState([]);
   const [postedAds, setPostedAds] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,7 +39,7 @@ const PostAd = () => {
       propertySize,
       amenities,
       isFurnished,
-      images
+      images,
     };
     console.log(newAd);
     setPostedAds((prevAds) => [...prevAds, newAd]);
@@ -120,16 +121,25 @@ const PostAd = () => {
               required
             />
           </div>
-          <div className="post_ad-form-group">
+          <div
+            className="post_ad-form-group"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
             <label htmlFor="post_ad-category">Category:</label>
-            <input
-              type="text"
-              id="post_ad-category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              required
-              placeholder="e.g., Residential, Commercial"
-            />
+            <div id="post_ad-property-type" className="custom-dropdown">
+              {category || "Select Type"}
+              {showDropdown && (
+                <div className="dropdown-content">
+                  <div onClick={() => setCategory("Residential")}>
+                    Residential
+                  </div>
+                  <div onClick={() => setCategory("Commercial")}>
+                    Commercial
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
           <div className="post_ad-form-group">
             <label htmlFor="post_ad-link">Link:</label>
@@ -250,13 +260,54 @@ const PostAd = () => {
         <ul>
           {postedAds.map((ad, index) => (
             <li key={index}>
-              <strong>{ad.title}</strong>
+              <strong>Title:</strong> {ad.title}
               <br />
-              {ad.description}
+              <strong>Description:</strong> {ad.description}
               <br />
-              Contact: {ad.contact}
+              <strong>Contact:</strong> {ad.contact}
               <br />
-              From: {ad.from} - To: {ad.to}
+              <strong>From Date:</strong> {ad.from}
+              <br />
+              <strong>To Date:</strong> {ad.to}
+              <br />
+              <strong>Category:</strong> {ad.category}
+              <br />
+              <strong>Link:</strong>{" "}
+              {ad.link ? (
+                <a href={ad.link} target="_blank" rel="noopener noreferrer">
+                  Click here
+                </a>
+              ) : (
+                "N/A"
+              )}
+              <br />
+              <strong>Price:</strong> {ad.price}
+              <br />
+              <strong>Property Type:</strong> {ad.propertyType}
+              <br />
+              <strong>Location:</strong> {ad.location}
+              <br />
+              <strong>Bedrooms:</strong> {ad.bedrooms}
+              <br />
+              <strong>Bathrooms:</strong> {ad.bathrooms}
+              <br />
+              <strong>Property Size:</strong> {ad.propertySize}
+              <br />
+              <strong>Amenities:</strong> {ad.amenities}
+              <br />
+              <strong>Is Furnished:</strong> {ad.isFurnished ? "Yes" : "No"}
+              <br />
+              <strong>Images:</strong>{" "}
+              {ad.images.length > 0
+                ? ad.images.map((image, i) => (
+                    <img
+                      key={i}
+                      src={URL.createObjectURL(image)}
+                      alt="Ad"
+                      style={{ width: "100px", height: "100px" }}
+                    />
+                  ))
+                : "No images uploaded"}
             </li>
           ))}
         </ul>

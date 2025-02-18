@@ -21,12 +21,12 @@ const PropCard = ({ property, properties, setProperties }) => {
   // const handleEdit = () => {
   //   // Send an API request to update the property status as approved
   //   axios
-  //     .put('/api/property', { put_prop_id: prop_id, status: 'approved' }) // Use prop_id directly
+  //     .put('/api/property', { put_prop_id: prop_id, status: 'approved' }) 
   //     .then(response => {
-  //       // Handle the response
+  //       
   //     })
   //     .catch(error => {
-  //       // Handle the error
+  //       
   //     });
   // };
 

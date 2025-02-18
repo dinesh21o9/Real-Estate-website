@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css";
 import { Link } from "react-router-dom";
-import "./login.css";
 
-const Login = () => {
+const ADMIN_LOGIN = () => {
   const [page, setPage] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
-    page: "userLogin",
+    page:"adminLogin",
   });
   const [error, setError] = useState("");
 
@@ -24,16 +24,16 @@ const Login = () => {
       setError("Please enter both email and password");
       return;
     }
-    // console.log(data);
+    
     axios
       .post("https://homeseekrapi2.onrender.com/login", data)
       .then(function (response) {
         
         // console.log(response.data.status);
         if(response.data.status){
-          
-          //jwt is in response.data.token
+
           window.token = response.data.token;
+          //jwt is in response.data.token
           console.log(window.token);
           setPage(true);
         
@@ -52,13 +52,13 @@ const Login = () => {
     <div className="login-container">
         {page ? (
         <div>
-          <p className="success-message">Login successful.</p>
-          <span className="login-message">You can now</span>
-          <Link to="/post">Post</Link>
+          <p className="success-message">Admin Login successful.</p>
+          <span className="login-message">You can now go to</span>
+          <Link to="/dashboard">Dashboard</Link>
         </div>
       ) : (
         <div>
-        <h1>Login</h1>
+        <h1>Admin Login</h1>
 
         <form onSubmit={handleLogin}>
             <div>
@@ -88,14 +88,10 @@ const Login = () => {
             {error && <p className="error">{error}</p>}
             <button type="submit" className="submit-btn">Login</button>
         </form>
-
-        <span className="text">Don't have an account? </span>
-        <a href="/signup" className="link">Signup</a>
-
         </div>
       )}
     </div>
   );
 };
 
-export default Login;
+export default ADMIN_LOGIN;

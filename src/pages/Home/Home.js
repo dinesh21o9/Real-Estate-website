@@ -1,9 +1,67 @@
 import React from "react";
-import Card from "../components/card";
-import property from "../property";
-import FeaturedCard from "../components/featuredCard";
-import Featuredprops from "../Featuredprops";
+import Card from "../../components/Card";
+import FeaturedCard from "../../components/FeaturedCard";
 import { useNavigate } from "react-router-dom";
+
+const Featuredprops = [
+  {
+    cover: "./assets/images/hero/h1.png",
+    name: "Family House",
+    total: "12 Property",
+  },
+  {
+    cover: "./assets/images/hero/h2.png",
+    name: "House & Villa",
+    total: "155 Property",
+  },
+  {
+    cover: "./assets/images/hero/h3.png",
+    name: "Apartment",
+    total: "300 Property",
+  },
+  {
+    cover: "./assets/images/hero/h4.png",
+    name: "Office & Studio",
+    total: "80 Property",
+  },
+  {
+    cover: "./assets/images/hero/h5.png",
+    name: "Villa & Condo",
+    total: "80 Property",
+  },
+  {
+    cover: "./assets/images/hero/h1.png",
+    name: "Farm house",
+    total: "80 Property",
+  },
+]
+
+const property = [
+  {
+      imgSrc: "./assets/images/property-1.jpg",
+      cardTitle: "10765 Hillshire Ave, Baton Rouge, LA 70810, USA"
+  },
+  {
+      imgSrc: "./assets/images/property-2.jpg",
+      cardTitle: "59345 STONEWALL DR, Plaquemine, LA 70764, USA"
+  },
+  {
+      imgSrc: "./assets/images/property-3.jpg",
+      cardTitle: "3723 SANDBAR DR, Addis, LA 70710, USA"
+  },
+  {
+      imgSrc: "./assets/images/property-4.jpg",
+      cardTitle: "LOT 21 ROYAL OAK DR, Prairieville, LA 70769, USA"
+  },
+  {
+      imgSrc: "./assets/images/property-5.jpg",
+      cardTitle: "710 BOYD DR, Unit #1102, Baton Rouge, LA 70808, USA"
+  },
+  {
+      imgSrc: "./assets/images/property-6.jpg",
+      cardTitle: "5133 MCLAIN WAY, Baton Rouge, LA 70809, USA" 
+  },
+]
 
 function Home() {
   const navigate = useNavigate();
@@ -143,13 +201,12 @@ function Home() {
                 </h2>
 
                 <p class="section-text">
-                  When it comes to your website, efficiency, transparency, and
-                  control are crucial aspects to prioritize. To enhance
-                  efficiency, consider optimizing the site's loading speed,
-                  streamlining navigation, and ensuring responsive design.
-                  Transparency can be achieved through clear and honest
-                  communication with users, transparent pricing and policies, as
-                  well as openly addressing any issues or concerns.
+                  Transparency is essential in building trust and credibility with users. 
+                  It can be fostered through open communication, clear terms of service, 
+                  and accessible customer support. Providing detailed product or service 
+                  descriptions, avoiding hidden fees, and ensuring data privacy further reinforce transparency. 
+                  Businesses should proactively disclose any potential conflicts of interest, 
+                  acknowledge mistakes when they occur, and take corrective action.
                 </p>
 
                 <a href="/#" class="btn btn-primary">
@@ -211,7 +268,7 @@ function Home() {
             </div>
           </section>
 
-          {/* Features1 */}
+          {/* Features */}
           <section className="featured background section service">
             <div className="container">
               <h2 class="h2 section-title"> Property Types </h2>

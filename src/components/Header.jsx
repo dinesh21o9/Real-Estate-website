@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, useLocation } from "react-router-dom";
-import userIcon from "./user.png";
+import userIcon from "../assets/logos/user.png";
 
 function Header() {
   const location = useLocation();
@@ -49,7 +49,6 @@ function Header() {
 
   const pathsToHideHeader = ["/", "/loginout"];
 
-  // Check if the current path is in the array
   const shouldHideHeader = pathsToHideHeader.includes(location.pathname);
 
   if (shouldHideHeader) {

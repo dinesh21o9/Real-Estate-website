@@ -1,0 +1,91 @@
+/* landing.css */
+
+.landing-home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; 
+  }
+  
+  .landing-home-banner-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .landing-home-bannerImage-container {
+    flex: 1;
+    text-align: right; 
+    position: relative; 
+  }
+  
+  .landing-home-bannerImage-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .landing-home-text-section {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .landing-primary-heading {
+    text-align: left;
+    font-size: 5.5rem; 
+    font-weight: bold;
+    color: rgb(47, 47, 47);
+    margin-bottom: 20px;
+    padding-left: 30%;
+  }
+  
+  .landing-primary-text {
+    text-align: left;
+    font-size: 2.4rem;
+    margin-bottom: 30px;
+    padding-left: 30%;
+  }
+
+  .landing-button-container {
+    width: 100%;
+    display: flex;
+    gap: 10%; 
+    padding-left: 30%;
+  }
+  
+  .landing-secondary-button {
+    background-color: hsl(142, 76%, 36%);
+    color: #fff;
+    width: 200px;
+    padding: 15px 35px;
+    font-size: 2.3rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0; 
+    align-self: flex-start; 
+  }
+  
+  .landing-secondary-button:hover {
+    background-color: hsl(142, 72%, 29%);
+  }
+  
+  .landing-decor {
+    position: absolute;
+    right: 10%; 
+    top: 25% ;
+    height: 85%;
+    width: 85%;
+  }
+  

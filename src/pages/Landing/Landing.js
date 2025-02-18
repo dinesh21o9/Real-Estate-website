@@ -1,6 +1,6 @@
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-import "./landing.css";
+import "./Landing.css";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {

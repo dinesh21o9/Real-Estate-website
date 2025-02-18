@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import PropCard from "../components/PropCard";
+import PropCard from "../../components/PropCard";
 import axios from "axios";
 import { PuffLoader } from "react-spinners";
-import "./dashboard.css";
+import "./Dashboard.css";
 
 function getProp(setProperties, setLoading) {
   const authToken = localStorage.getItem("auth");

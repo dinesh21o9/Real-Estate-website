@@ -43,19 +43,17 @@
     margin-bottom: 1.5rem;
   }
   
-  /* Style for loading container */
 .loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Adjust to fit your layout */
+  height: 100vh; 
 }
 
-/* Style for the loading text */
 .loading-container span {
-  margin-top: 10px; /* Adjust the margin as needed */
-  color: #6e82c4; /* Set the text color */
+  margin-top: 10px; 
+  color: #6e82c4; 
 }
 
   .info p {
