@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import { useParams } from "react-router-dom";
-import "./view_prop.css";
+import "./View_prop.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import axios from "axios";
 import { PuffLoader } from "react-spinners";

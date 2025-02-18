@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./combined-auth.css"; // Import your CSS file here
+import "./Combined-auth.css"; 
 import { useNavigate } from "react-router-dom";
 import { BounceLoader } from "react-spinners";
 
